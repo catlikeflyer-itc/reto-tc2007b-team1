@@ -1,12 +1,12 @@
-import React from "react";
-import InputBox from "../../inputs/inputbox";
-import Signup from "../../buttons/signup/signup";
+import React from 'react'
+import Login from '../../buttons/login/login'
+import InputBox from '../../inputs/inputbox'
 
-export default function index() {
+export default function LoginSection() {
   return (
     <div className="container flex flex-col m-2 p-4 justify-center items-center">
       <h1 className="text-4xl text-center font-bold mb-4">
-        Registro de administrador
+        Ingresa al sistema
       </h1>
       <div className="flex flex-col justify-center items-center m-4">
         <div className="grid grid-cols-3 w-full m-4">
@@ -16,25 +16,13 @@ export default function index() {
           <InputBox type="text" id="username"/>
         </div>
         <div className="grid grid-cols-3 w-full m-4">
-          <label htmlFor="email" className="col-span-1">
-            Correo Electronico:{" "}
-          </label>
-          <InputBox type="email" id="email" />
-        </div>
-        <div className="grid grid-cols-3 w-full m-4">
           <label htmlFor="pw" className="col-span-1">
             Contrasena:{" "}
           </label>
           <InputBox type="password" id="pw"/>
         </div>
-        <div className="grid grid-cols-3 w-full m-4">
-          <label htmlFor="cpw" className="col-span-1">
-            Confirmar contrasena:{" "}
-          </label>
-          <InputBox type="password" id="cpw" />
-        </div>
       </div>
-      <Signup classX={"w-40"} />
+      <Login classX={"w-40"} />
     </div>
-  );
+  )
 }
