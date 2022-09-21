@@ -1,0 +1,60 @@
+{
+    "navbar": [
+        {
+            "text": "Inicio",
+            "url": "/"
+        },
+        {
+            "text": "Servicios",
+            "url": "/servicios"
+        },
+        {
+            "text": "Nosotros",
+            "url": "/nosotros"
+        },
+        {
+            "text": "Contacto",
+            "url": "/contacto"
+        }
+        
+    ],
+
+    "social": [
+        {
+            "name": "Facebook",
+            "url": "/"
+        },
+        {
+            "name": "WhatsApp",
+            "url": "/"
+        },
+        {
+            "name": "Instagram",
+            "url": "/"
+        }
+    ],
+    "logo": {
+        "src": "/vercel.svg",
+        "alt": "My Site Logo"
+    },
+    "hero": {
+        "title": "Álvaro Obregón",
+        "subtitle": "Tu Alcaldía Aliada",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut rutrum pellentesque magna vel neque, odio turpis. Nunc elementum in enim, suscipit egestas gravida eget tellus a. Eget nunc, purus pretium augue semper feugiat. ",
+        "links": [
+            {
+                "text": "Usuarios",
+                "url": "/usuarios"
+            },
+            {
+                "text": "Casos",
+                "url": "/casos"
+            },
+            {
+                "text": "Incidentes",
+                "url": "/incidentes"
+            }
+        ]
+    }
+             
+}   
