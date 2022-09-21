@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Navlink from "../routers/navlink/navlink";
-import Sociallink from "../routers/sociallink/sociallink";
 import { BiMenu } from "react-icons/bi";
 import data from "../../data/staticData.json"
-import LoginButton from "../buttons/login/login";
+import LoginButton from "../routers/login/login";
+import SignupButton from "../routers/signup/signup";
 
 export default function Navbar() {
   const [toggle, setToggle] = React.useState(false);
@@ -31,6 +31,7 @@ export default function Navbar() {
       </div>
       <div className="flex flex-row items-center justify-end md:w-1/4">
         <LoginButton />
+        <SignupButton />
       </div>
       
       {toggle && (

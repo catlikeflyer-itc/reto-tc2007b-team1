@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import LoginButton from "../../buttons/login/login";
+import LoginButton from "../../routers/login/login";
 
 export default function Hero({ data }) {
   return (
@@ -22,7 +22,7 @@ export default function Hero({ data }) {
           </Link>
         ))}
       </div>
-      <LoginButton></LoginButton>
+      <LoginButton classX="w-40 text-center"></LoginButton>
     </div>
   );
 }
