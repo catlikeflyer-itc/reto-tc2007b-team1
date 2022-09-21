@@ -34,8 +34,8 @@
         }
     ],
     "logo": {
-        "src": "/vercel.svg",
-        "alt": "My Site Logo"
+        "src": "/images/ao.png",
+        "alt": "AO logo"
     },
     "hero": {
         "title": "Álvaro Obregón",

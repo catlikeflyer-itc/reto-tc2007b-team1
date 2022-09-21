@@ -14,8 +14,8 @@ export default function Navbar() {
       className="flex flex-row justify-between items-center h-14 bg-gray-800 fixed t-0 l-0 w-full z-10 px-2 transition-opacity ease-in-out duration-300"
       onLoad={console.log(data)}
     >
-      <div className="flex flex-row items-center justify-start md:w-1/4">
-        <Image src={data.logo.src} alt={data.logo.alt} width={50} height={50} />
+      <div className="flex flex-row items-center justify-start md:w-1/4 h-12" >
+        <Image src={data.logo.src} alt={data.logo.alt} width={150} height={50} objectFit="cover" />
       </div>
       <div className="lg:flex flex-row items-center justify-center md:w-1/2 hidden">
         {data.navbar.map((item) => (
