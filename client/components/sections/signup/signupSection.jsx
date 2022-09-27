@@ -7,7 +7,7 @@ export default function SignupSection() {
   const [data, setData] = React.useState({});
   const [error, setError] = React.useState(false);
 
-  const InputDiv = ({ ref, type, id }) => (
+  const InputDiv = ({ refi, type, id }) => (
     <div className="grid grid-cols-3 w-full m-4">
       <label htmlFor={id} className="col-span-1">
         {id}
@@ -15,7 +15,7 @@ export default function SignupSection() {
       <InputBox
         type={type}
         id={id}
-        //onChange={() => setData({ ...data, data[ref]: e.target.value })}
+        onChange={(e) => setData({ ...data, [refi]: e.target.value })}
       />
     </div>
   );
@@ -27,10 +27,12 @@ export default function SignupSection() {
       </h1>
       <div className="flex flex-col justify-center items-center m-4">
         {datas.signup.map((data) => (
-          <InputDiv ref={data.ref} type={data.type} id={data.id} />
+          <InputDiv refi={data.ref} type={data.type} id={data.id} />
         ))}
       </div>
       <Signup classX={"w-40"} />
+
+      {data && <p>{JSON.stringify(data)}</p>}
     </div>
   );
 }
