@@ -55,7 +55,29 @@
                 "url": "/incidentes"
             }
         ]
-    }
+    },
+    "signup": [
+        {
+            "ref": "usuario",
+            "type": "text",
+            "id": "Usuario"
+        },
+        {
+            "ref": "correo",
+            "type": "email",
+            "id": "Correo"
+        },
+        {
+            "ref": "contraseña",
+            "type": "password",
+            "id": "Contraseña"
+        },
+        {
+            "ref": "confirmar",
+            "type": "password",
+            "id": "Confirmar Contraseña"
+        }
+    ]
     
              
 }   
