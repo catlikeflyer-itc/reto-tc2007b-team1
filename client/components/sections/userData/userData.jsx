@@ -2,9 +2,9 @@ import React from "react";
 // Add getStaticProps to get data
 
 const UserDiv = ({ text, data }) => (
-  <div className="grid grid-cols-3 w-full m-4">
+  <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full m-4">
     <p className="col-span-1">{text}:</p>
-    <span className="col-span-2 font-bold">{data}</span>
+    <span className="lg:col-span-2 col-span-1 font-bold">{data}</span>
   </div>
 );
 

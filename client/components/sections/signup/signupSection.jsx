@@ -7,7 +7,7 @@ export default function SignupSection({ datas }) {
   const [error, setError] = React.useState(false);
 
   const InputDiv = ({ refi, type, id }) => (
-    <div className="grid grid-cols-3 w-full m-4">
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full m-4">
       <label htmlFor={id} className="col-span-1">
         {id}
       </label>
