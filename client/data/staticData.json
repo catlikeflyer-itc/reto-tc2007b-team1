@@ -5,8 +5,8 @@
             "url": "/"
         },
         {
-            "text": "Servicios",
-            "url": "/servicios"
+            "text": "Usuarios",
+            "url": "/usuario"
         },
         {
             "text": "Nosotros",
