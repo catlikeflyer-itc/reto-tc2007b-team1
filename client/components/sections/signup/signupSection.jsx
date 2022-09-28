@@ -15,7 +15,7 @@ export default function SignupSection() {
       <InputBox
         type={type}
         id={id}
-        onChange={(e) => setData({ ...data, [refi]: e.target.value })}
+        //onChange={(e) => setData({ ...data, eval(refi + ":" + e.target.value )})}
       />
     </div>
   );
@@ -31,8 +31,6 @@ export default function SignupSection() {
         ))}
       </div>
       <Signup classX={"w-40"} />
-
-      {data && <p>{JSON.stringify(data)}</p>}
     </div>
   );
 }

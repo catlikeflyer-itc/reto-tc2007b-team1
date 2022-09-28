@@ -63,17 +63,17 @@
             "id": "Usuario"
         },
         {
-            "ref": "correo",
+            "ref": "email",
             "type": "email",
             "id": "Correo"
         },
         {
-            "ref": "contraseña",
+            "ref": "contrasena",
             "type": "password",
             "id": "Contraseña"
         },
         {
-            "ref": "confirmar",
+            "ref": "contrasena2",
             "type": "password",
             "id": "Confirmar Contraseña"
         }
