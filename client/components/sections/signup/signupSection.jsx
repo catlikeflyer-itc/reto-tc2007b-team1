@@ -1,9 +1,8 @@
 import React from "react";
 import InputBox from "../../inputs/inputbox";
 import Signup from "../../buttons/signup/signup";
-import datas from "../../../data/staticData.json";
 
-export default function SignupSection() {
+export default function SignupSection({ datas }) {
   const [data, setData] = React.useState({});
   const [error, setError] = React.useState(false);
 

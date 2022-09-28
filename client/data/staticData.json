@@ -18,7 +18,6 @@
         }
         
     ],
-
     "social": [
         {
             "name": "Facebook",
@@ -77,7 +76,97 @@
             "type": "password",
             "id": "Confirmar Contraseña"
         }
-    ]
+    ],
+    "login": [
+        {
+            "ref": "email",
+            "type": "email",
+            "id": "Correo"
+        },
+        {
+            "ref": "contrasena",
+            "type": "password",
+            "id": "Contraseña"
+        }
+    ],
+    "userInfo": [
+        {
+            "ref": "usuario",
+            "type": "text",
+            "text": "Usuario"
+        },
+        {
+            "ref": "email",
+            "type": "email",
+            "text": "Correo"
+        }
+    ],
+    "filters": [
+        {
+            "ref": "tipo",
+            "type": "text",
+            "id": "Tipo"
+        },
+        {
+            "ref": "fecha",
+            "type": "date",
+            "id": "Fecha"
+        },
+        {
+            "ref": "estado",
+            "type": "text",
+            "id": "Estado"
+        }
+    ],
+    "docsData": [
+        "Folio",
+        "Tipo",
+        "Fecha",
+        "Actores"
+    ],
+    "uploadDocs": [
+        { 
+            "ref": "nombre", 
+            "type": "text", 
+            "id": "Nombre" 
+        },
+        {
+            "ref": "tipo",
+            "type": "text",
+            "id": "Tipo"
+        },
+        {
+            "ref": "juzgado",
+            "type": "text",
+            "id": "Juzgado"
+        },
+        {
+            "ref": "estado",
+            "type": "text",
+            "id": "Estado de proceso"
+        },
+        {
+            "ref": "folio",
+            "type": "text",
+            "id": "Folio"
+        },
+        {
+            "ref": "descripcion",
+            "type": "text",
+            "id": "Descripción"
+        },
+        {
+            "ref": "archivo",
+            "type": "file",
+            "id": "Archivo"
+        }
+    ],
+    "footer": {
+        "logo": "Álvaro Obregón",
+        "address": "Unidad Administrativa Municipal Canarios s/n Esq. Calle 10, Col. Tolteca, C.P. 01150, CDMX",
+        "email": "oficina.alcaldia@aao.cdmx.gob.mx",
+        "phone": "(55) 5276 6700"
+    }
     
              
 }   
