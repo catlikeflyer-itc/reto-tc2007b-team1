@@ -19,6 +19,44 @@ a {
   box-sizing: border-box;
 }
 
+/* Card colors */
+.green {
+  @apply bg-green-800 hover:bg-green-700;
+}
+
+.yellow {
+  @apply bg-amber-800 hover:bg-amber-700;
+}
+
+.red {
+  @apply bg-red-800 hover:bg-red-700;
+}
+
+.blue {
+  @apply bg-blue-800 hover:bg-blue-700;
+}
+
+.cyan {
+  @apply bg-cyan-800 hover:bg-cyan-700;
+}
+
+.teal {
+  @apply bg-teal-800 hover:bg-teal-700;
+}
+
+.orange {
+  @apply bg-orange-800 hover:bg-orange-700;
+}
+
+.emerald {
+  @apply bg-emerald-800 hover:bg-emerald-700;
+}
+
+.stone {
+  @apply bg-gray-800 hover:bg-gray-700;
+}
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

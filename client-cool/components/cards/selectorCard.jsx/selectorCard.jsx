@@ -6,7 +6,7 @@ export default function SelectorCard({ data }) {
   return (
     <Link href={data.link}>
       <div
-        className={`${data.bg} ${data.hoverBg} rounded-lg shadow-xl flex flex-col p-4 justify-start items-start m-2 col-span-1 cursor-pointer`}
+        className={`${data.bg} rounded-lg shadow-xl flex flex-col p-4 justify-start items-start m-2 col-span-1 cursor-pointer`}
       >
         <h1 className="font-bold text-xl text-white">{data.label}</h1>
         <div className="w-full flex flex-col justify-center items-center">
