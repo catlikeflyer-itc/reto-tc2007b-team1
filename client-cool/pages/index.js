@@ -1,6 +1,6 @@
 import Head from "next/head";
 import data from "../data/staticData.json"
-import MainLogin from "../components/sections/mainLogin/mainLogin";
+import MainAuth from "../components/sections/mainAuth.jsx/mainAuth";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -12,9 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <MainLogin data={data} />
-      </main>
+        <MainAuth data={data} />
     </div>
   );
 }
