@@ -178,7 +178,7 @@
             "label": "Perfil",
             "image": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzUycHQiIGhlaWdodD0iNzUycHQiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDc1MiA3NTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiA8ZyBmaWxsPSIjZmZmIj4KICA8cGF0aCBkPSJtNDg3IDI3OS44YzAgNjEuMzAxLTQ5LjY5NSAxMTEtMTExIDExMXMtMTEwLjk5LTQ5LjY5NS0xMTAuOTktMTExYzAtNjEuMzAxIDQ5LjY5MS0xMTEgMTEwLjk5LTExMXMxMTEgNDkuNjk1IDExMSAxMTEiLz4KICA8cGF0aCBkPSJtNTA5LjIgNDM1LjJoLTI2Ni4zOWMtNDAuNjk5IDAtNzQgMzMuMjk3LTc0IDczLjk5NiAwIDQwLjY5OSAzMy4yOTcgNzMuOTk2IDczLjk5NiA3My45OTZoMjY2LjM5YzQwLjY5OSAwIDczLjk5Ni0zMy4yOTcgNzMuOTk2LTczLjk5NiAwLTQwLjY5OS0zMy4yOTctNzMuOTk2LTczLjk5Ni03My45OTZ6Ii8+CiA8L2c+Cjwvc3ZnPgo=",
             "bg": "green",
-            "link": "/categorias"
+            "link": "/perfil"
         },
         {
             "label": "Historial",

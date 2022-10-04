@@ -3,12 +3,16 @@
         {
             "id": 1,
             "name": "John Doe",
-            "email": "johndoe@foobar.com"
+            "email": "johndoe@foobar.com",
+            "password": "1234",
+            "pos": "Admin"
         },
         {
             "id": 2,
             "name": "Jane Doe",
-            "email": "janedoe@foobar.com" 
+            "email": "janedoe@foobar.com",
+            "password": "1234",
+            "pos": "Admin"
         }
     ],
     "dummyBuscador": [

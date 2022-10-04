@@ -7,7 +7,10 @@ import { useAppContext } from "../../../context/AppContext";
 // Add ref or onchange state management
 
 export default function MainAuth({ data, user }) {
-  const { setUser } = useAppContext();
+  const { setUser, userSetter } = useAppContext();
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [pass, setPass] = React.useState("");
 
   return (
     <div className="w-screen grid md:grid-cols-2 grid-cols-1 min-h-screen">
@@ -22,10 +25,15 @@ export default function MainAuth({ data, user }) {
         />
         {user ? (
           <>
-            <TextInput labelx={"Correo"} placeholder="Ingresa tu correo" />
+            <TextInput
+              labelx={"Correo"}
+              placeholder="Ingresa tu correo"
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <TextInput
               labelx={"Contraseña"}
               placeholder="Ingresa tu contraseña"
+              onChange={(e) => setPass(e.target.value)}
             />
             <MainButton
               label="Iniciar sesión"
@@ -36,23 +44,32 @@ export default function MainAuth({ data, user }) {
           </>
         ) : (
           <>
-            <TextInput labelx={"Correo"} placeholder="Ingresa tu correo" />
-            <TextInput labelx={"Nombre"} placeholder="John Doe" />
+            <TextInput
+              labelx={"Correo"}
+              placeholder="Ingresa tu correo"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <TextInput
+              labelx={"Nombre"}
+              placeholder="John Doe"
+              onChange={(e) => setName(e.target.value)}
+            />
             <TextInput
               labelx={"Contraseña"}
               placeholder="Ingresa tu contraseña"
+              onChange={(e) => setPass(e.target.value)}
             />
             <TextInput
               labelx={"Confirmar contraseña"}
               placeholder="Ingresa tu contraseña"
             />
             <MainButton
-              label="Iniciar sesión"
+              label="Registrar"
               color="bg-green-500"
               hoverColor="hover:bg-blue-600"
               onClick={() => {
                 console.log("Click");
-                setUser(true);
+                userSetter({ name, email, pass });
               }}
             />
           </>
