@@ -2,12 +2,15 @@ import React from "react";
 import Image from "next/image";
 import MainButton from "../../buttons/mainButton/mainButton";
 import TextInput from "../../inputs/textInput/textInput";
+import { useAppContext } from "../../../context/AppContext";
 
 // Add ref or onchange state management
 
 export default function MainAuth({ data, user }) {
+  const { setUser } = useAppContext();
+
   return (
-    <div className="w-full grid md:grid-cols-2 grid-cols-1 min-h-screen">
+    <div className="w-screen grid md:grid-cols-2 grid-cols-1 min-h-screen">
       <div className="h-full md:col-span-1 hidden md:block bg-green-500" />
       <div className="h-full md:col-span-1 flex flex-col items-start justify-start p-4">
         <Image
@@ -28,6 +31,7 @@ export default function MainAuth({ data, user }) {
               label="Iniciar sesión"
               color="bg-green-500"
               hoverColor="hover:bg-blue-600"
+              onClick={() => setUser(true)}
             />
           </>
         ) : (
@@ -46,6 +50,10 @@ export default function MainAuth({ data, user }) {
               label="Iniciar sesión"
               color="bg-green-500"
               hoverColor="hover:bg-blue-600"
+              onClick={() => {
+                console.log("Click");
+                setUser(true);
+              }}
             />
           </>
         )}
