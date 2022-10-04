@@ -10,5 +10,57 @@
             "name": "Jane Doe",
             "email": "janedoe@foobar.com" 
         }
-    ]
+    ],
+    "dummyBuscador": [
+    {
+        "folio": 1123123,
+        "admin": "John Doe",
+        "fecha": "2017-01-01",
+        "link": "http://www.google.com",
+        "title": "Buscador de prueba"
+    },
+    {
+        "folio": 1123123,
+        "admin": "John Doe",
+        "fecha": "2017-01-01",
+        "link": "http://www.google.com",
+        "title": "Buscador de prueba"
+    },
+    {
+        "folio": 1123123,
+        "admin": "John Doe",
+        "fecha": "2017-01-01",
+        "link": "http://www.google.com",
+        "title": "Buscador de prueba"
+    },
+    {
+        "folio": 1123123,
+        "admin": "John Doe",
+        "fecha": "2017-01-01",
+        "link": "http://www.google.com",
+        "title": "Buscador de prueba"
+    },
+    {
+        "folio": 1123123,
+        "admin": "John Doe",
+        "fecha": "2017-01-01",
+        "link": "http://www.google.com",
+        "title": "Buscador de prueba"
+    },
+    {
+        "folio": 1123123,
+        "admin": "John Doe",
+        "fecha": "2017-01-01",
+        "link": "http://www.google.com",
+        "title": "Buscador de prueba"
+    },
+    {
+        "folio": 1123123,
+        "admin": "John Doe",
+        "fecha": "2017-01-01",
+        "link": "http://www.google.com",
+        "title": "Buscador de prueba"
+    }
+
+]
 }
