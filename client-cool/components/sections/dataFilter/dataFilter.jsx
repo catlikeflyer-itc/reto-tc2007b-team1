@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import DownloadButton from "../../buttons/downloadButton/downloadButton";
 import SelectInput from "../../inputs/selectInput/SelectInput";
@@ -5,7 +6,14 @@ import SelectInput from "../../inputs/selectInput/SelectInput";
 const TableRow = ({ data }) => (
   <tr>
     <td>{data.folio}</td>
-    <td>{data.title}</td>
+    <td>
+      <Link
+        href={"/buscar/folio/" + data.folio}
+        className="underline text-blue-500 hover:text-cyan-300"
+      >
+        {data.title}
+      </Link>
+    </td>
     <td>{data.admin}</td>
     <td>{data.fecha}</td>
     <td>
