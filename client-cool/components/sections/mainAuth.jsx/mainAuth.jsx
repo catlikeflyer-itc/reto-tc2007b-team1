@@ -69,7 +69,7 @@ export default function MainAuth({ data, user }) {
               hoverColor="hover:bg-blue-600"
               onClick={() => {
                 console.log("Click");
-                userSetter({ name, email, pass });
+                setUser(true);
               }}
             />
           </>
