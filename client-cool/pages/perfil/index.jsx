@@ -16,7 +16,7 @@ export default function index() {
           <p>Puesto:</p>
           <p>Matricula:</p>
         </div>
-        <div className="flex flex-col justify-start items-end col-span-1 rounded-r-lg p-2">
+        <div className="flex flex-col justify-start items-end col-span-1 rounded-r-lg">
           <p>Nombre</p>
           <p>Correo</p>
           <p>Puesto</p>
