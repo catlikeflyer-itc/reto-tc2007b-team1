@@ -66,6 +66,7 @@ export default function MainAuth({ data, user }) {
             <MainButton
               label="Registrar"
               color="bg-green-500"
+              id="registerButton"
               hoverColor="hover:bg-blue-600"
               onClick={() => {
                 console.log("Click");
