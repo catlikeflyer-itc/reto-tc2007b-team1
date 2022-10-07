@@ -1,3 +1,9 @@
+describe('temp', () => {
+    it('should render the component', () => {
+        expect(true).toBe(true);
+    })
+})
+
 /*
 import {screen, cleanup} from '@testing-library/react';
 import {shallow, configure, render} from 'enzyme';

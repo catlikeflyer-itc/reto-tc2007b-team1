@@ -1,7 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-import {cleanup, render} from '@testing-library/react';
+import {cleanup, render, waitFor} from '@testing-library/react';
+import '@testing-library/jest-dom';
 import SelectorCard from '../components/cards/selectorCard.jsx/selectorCard';
 import Selector from '../components/sections/selector/selector';
 import data from "../data/staticData.json";
@@ -18,7 +19,7 @@ describe('Selector', () => {
           ));
         render(<Selector data={data.selector} />);
         for (let i = 0; i < selectors.length; i++) {
-            expect(selectors[i]).toBeInTheDocument();
+            waitFor(() => expect(selectors[i]).toBeInTheDocument());
         }
     })
 })
