@@ -29,17 +29,20 @@ export default function MainAuth({ data, user }) {
               labelx={"Correo"}
               placeholder="Ingresa tu correo"
               onChange={(e) => setEmail(e.target.value)}
+              data-cy = "email"
             />
             <TextInput
               labelx={"Contraseña"}
               placeholder="Ingresa tu contraseña"
               onChange={(e) => setPass(e.target.value)}
+              data-cy = "pass"
             />
             <MainButton
               label="Iniciar sesión"
               color="bg-green-500"
               hoverColor="hover:bg-blue-600"
               onClick={() => setUser(true)}
+              data-cy = "login"
             />
           </>
         ) : (
@@ -48,26 +51,31 @@ export default function MainAuth({ data, user }) {
               labelx={"Correo"}
               placeholder="Ingresa tu correo"
               onChange={(e) => setEmail(e.target.value)}
+              data-cy = "email"
             />
             <TextInput
               labelx={"Nombre"}
               placeholder="John Doe"
               onChange={(e) => setName(e.target.value)}
+              data-cy = "name"
             />
             <TextInput
               labelx={"Contraseña"}
               placeholder="Ingresa tu contraseña"
               onChange={(e) => setPass(e.target.value)}
+              data-cy = "pass"
             />
             <TextInput
               labelx={"Confirmar contraseña"}
               placeholder="Ingresa tu contraseña"
+              data-cy = "pass2"
             />
             <MainButton
               label="Registrar"
               color="bg-green-500"
               id="registerButton"
               hoverColor="hover:bg-blue-600"
+              data-cy = "registerButton"
               onClick={() => {
                 console.log("Click");
                 setUser(true);
