@@ -46,6 +46,17 @@ Description: Delete document by id
 Params: id
 Response: document data object
 
-## User Authentication
-
+## Document data object
+```json
+{
+  "folio": "int",
+  "title": "string",
+  "amparo": "string",
+  "status": "string",
+  "createdAt": "datetime",
+  "updatedAt": "datetime",
+  "expediente": "int",
+  "administrator": "string",
+}
+```
 
