@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TextInput({ labelx, placeholder, onChange }, props) {
+export default function TextInput({ labelx, placeholder, onChange}, props) {
   return (
     <div className="my-2">
       <label htmlFor="label">{labelx}:</label>
@@ -14,4 +14,5 @@ export default function TextInput({ labelx, placeholder, onChange }, props) {
       />
     </div>
   );
+  
 }
