@@ -4,7 +4,6 @@
 import {cleanup, render, waitFor, fireEvent,screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import SelectorCard from '../components/cards/selectorCard.jsx/selectorCard';
-import Selector from '../components/sections/selector/selector';
 import data from "../data/staticData.json";
 
 
@@ -17,15 +16,11 @@ describe('Selector', () => {
     />
   ));
     it('should render the component', () => {
-        render(<Selector data={data.selector} />);
+      const names = ['Buscar','Subir','Perfil','Historial']
         for (let i = 0; i < selectors.length; i++) {
-            waitFor(() => expect(selectors[i]).toBeInTheDocument());
+            render(selectors[i]);
+            expect(screen.getByText(names[i])).toBeInTheDocument();
         }
-      })
-      it('should link to /buscar', () => {
-        render(<Selector data={data.selector} />);
-        fireEvent.click(screen.getByText('Buscar'));
-        waitFor(() => expect(window.location.pathname).toContain('/buscar'));
       })
 })
 
