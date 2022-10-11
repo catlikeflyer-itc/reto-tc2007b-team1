@@ -12,6 +12,7 @@ export default function UploadExpedient() {
   const [desc, setDesc] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [cat, setCat] = React.useState("");
+  const [status, setStatus] = React.useState("");
   const today = new Date();
 
   const handleCreate = async (e) => {
@@ -70,6 +71,12 @@ export default function UploadExpedient() {
           labelx="Categoria"
           onChange={(e) => setCat(e.target.value)}
           selectOptions={["Categoria 1", "Categoria 2", "Categoria 3"]}
+          state={cat}
+        />
+        <SelectInput
+          labelx="Estatus"
+          onChange={(e) => setStatus(e.target.value)}
+          selectOptions={['En proceso', 'Finalizado']}
           state={cat}
         />
         <MainButton

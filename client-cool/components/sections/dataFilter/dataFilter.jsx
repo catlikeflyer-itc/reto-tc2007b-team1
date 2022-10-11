@@ -1,30 +1,28 @@
 import Link from "next/link";
 import React from "react";
 import SelectInput from "../../inputs/selectInput/SelectInput";
-import clientPromise from "../../../lib/mongodb";
 
 const TableRow = ({ data }) => (
   <tr>
     <td>{data.expediente}</td>
     <td>
-      <Link
-        href={"/buscar/folio/" + data.expediente}
-        className="underline text-blue-500 hover:text-cyan-300"
-      >
-        {data.title}
+      <Link href={"/buscar/expediente/" + data.expediente}>
+        <span className="underline text-blue-500 hover:text-cyan-300">
+          {data.title}
+        </span>
       </Link>
     </td>
     <td>{data.createdBy}</td>
-    <td>{data.generatedAt}</td>
+    <td>{data.generatedAt.split("T")[0]}</td>
   </tr>
 );
 
 export default function DataFilter({ title }) {
-  const [data, setData] = React.useState("");
+  const [datax, setData] = React.useState("");
 
   React.useEffect(() => {
     const fetchData = async () => {
-      fetch("http://localhost:300/api/expedientes/all-expedientes", {
+      fetch("http://localhost:3000/api/expedientes/all-expedientes", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -55,12 +53,11 @@ export default function DataFilter({ title }) {
             <th>Título</th>
             <th>Admin</th>
             <th>Fecha</th>
-            <th>Descargar</th>
           </tr>
         </thead>
         <tbody>
           {/** Add filters */}
-          {data.map((item) => (
+          {datax.map((item) => (
             <TableRow data={item} />
           ))}
         </tbody>
@@ -68,5 +65,5 @@ export default function DataFilter({ title }) {
     </div>
   );
 
-  return <div>{data ? <Show /> : <p>Loading...</p>}</div>;
+  return <div>{datax ? <Show /> : <p>Loading...</p>}</div>;
 }

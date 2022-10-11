@@ -12,9 +12,11 @@ export default function UploadDocument() {
     const [title, setTitle] = React.useState("");
     const [type, setType] = React.useState("");
     const [file, setFile] = React.useState("");
+    const [location, setLocation] = React.useState("");
   // React get file path
 
   // handle upload
+  //Document local storage
 
   return (
     <div className="container flex flex-col justify-start items-center m-4 mb-64">
@@ -51,6 +53,11 @@ export default function UploadDocument() {
           labelx="Archivo"
           placeholder="Archivo"
           onChange={(e) => setFile(e.target.files[0])}
+        />
+        <TextAreaInput
+          labelx="Ubicación"
+          placeholder="Ubicación fisica del documento"
+          onChange={(e) => setLocation(e.target.value)}
         />
         <MainButton
           label="Subir"
