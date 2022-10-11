@@ -57,7 +57,7 @@ export default function MainAuth({ data, user }) {
         <Image
           src={data.logo.src}
           alt={data.logo.alt}
-          width={150}
+          width={150} 
           height={50}
           objectFit="cover"
         />

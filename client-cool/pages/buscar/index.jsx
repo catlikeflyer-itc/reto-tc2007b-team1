@@ -1,7 +1,6 @@
 import React from "react";
-import Categorizer from "../../components/sections/categorizer/categorizer";
-import data from "../../data/staticData.json";
+import DataFilter from "../../components/sections/dataFilter/dataFilter";
 
 export default function index() {
-  return <Categorizer data={data.categorizer} />;
+  return <DataFilter title={"Hello"} />;
 }

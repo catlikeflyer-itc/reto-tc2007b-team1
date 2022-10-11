@@ -30,9 +30,9 @@ export default function Looker({ data, routerParam }) {
           />
         </div>
         <div className="flex flex-col justify-start items-start col-span-1 rounded-r-lg p-4">
-          <h1>Folio: {doc.folio}</h1>
-          <h1>Fecha: {doc.fecha}</h1>
-          <h1>Admin: {doc.admin}</h1>
+          <h1>Folio: {doc.expediente}</h1>
+          <h1>Fecha: {doc.generatedAt}</h1>
+          <h1>Admin: {doc.createdBy}</h1>
         </div>
       </div>
     </div>

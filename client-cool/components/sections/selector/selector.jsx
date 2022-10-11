@@ -15,7 +15,7 @@ export default function Selector({ data }) {
           <SelectorCard key={index} data={item} />
         ))}
       </div>
-      {user && "User active"}
+      {user && user.email}
     </div>
   );
 }
