@@ -1,8 +1,7 @@
 import Head from "next/head";
 import data from "../data/staticData.json";
-import MainAuth from "../components/sections/mainAuth.jsx/mainAuth";
+import MainAuth from "../components/sections/mainAuth/mainAuth";
 import Selector from "../components/sections/selector/selector";
-import styles from "../styles/Home.module.css";
 import { useAppContext } from "../context/AppContext";
 
 export default function Home() {
