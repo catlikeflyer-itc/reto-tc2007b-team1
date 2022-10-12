@@ -17,14 +17,14 @@ export default async function handler(req, res) {
           if (myExp) {
             res.status(200).json(myExp);
           } else {
-            res.status(404).json({ message: "User not found" });
+            res.status(404).json({ message: "Docs not found" });
           }
         } else {
           const myDocs = await db.collection("documentos").find({}).toArray();
           res.status(200).json(myDocs);
         }
       } catch (error) {
-        res.status(500).json({ message: "Error inserting user" });
+        res.status(500).json({ message: "Error inserting doc" });
       }
   }
 }

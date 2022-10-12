@@ -4,6 +4,7 @@ import FileInput from "../../inputs/fileInput/fileInput";
 import SelectInput from "../../inputs/selectInput/SelectInput";
 import TextAreaInput from "../../inputs/textArea/textAreaInput";
 import TextInput from "../../inputs/textInput/textInput";
+import { useAppContext } from "../../../context/AppContext";
 
 export default function UploadDocument() {
   const [folio, setFolio] = React.useState("");
@@ -13,9 +14,10 @@ export default function UploadDocument() {
   const [type, setType] = React.useState("");
   const [file, setFile] = React.useState("");
   const [location, setLocation] = React.useState("");
+  const { user } = useAppContext();
+  const today = new Date();
 
   const [data, setData] = React.useState([]);
-  const [expList, setExpList] = React.useState([]);
   // React get file path
 
   React.useEffect(() => {
@@ -35,6 +37,35 @@ export default function UploadDocument() {
   }, []);
 
   // handle upload
+  const handleCreate = async (e) => {
+    e.preventDefault();
+
+    if (expediente === "" || title === "") {
+      alert("Please fill all fields");
+    } else {
+      let res = await fetch(
+        "http://localhost:3000/api/documents/create-document",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            folio,
+            desc,
+            expediente,
+            title,
+            type,
+            file,
+            location,
+            generatedAt: today,
+            createdBy: user.email,
+          }),
+        }
+      );
+
+      res = await res.json();
+      alert("Documento creado");
+      router.push("/");
+    }
+  };
   //Document local storage
 
   return (
@@ -84,7 +115,7 @@ export default function UploadDocument() {
         />
         <MainButton
           label="Subir"
-          onClick={() => console.log("Subir")}
+          onClick={handleCreate}
           color="bg-blue-700"
           hoverColor="bg-blue-500"
         />
