@@ -5,14 +5,15 @@ import TextInput from "../../inputs/textInput/textInput";
 import TextAreaInput from "../../inputs/textArea/textAreaInput";
 import { useAppContext } from "../../../context/AppContext";
 
-export default function UploadExpedient() {
+export default function UploadExpedient({ data }) {
   // React get file path
   const { user } = useAppContext();
   const [expediente, setExpediente] = React.useState("");
   const [desc, setDesc] = React.useState("");
   const [title, setTitle] = React.useState("");
-  const [cat, setCat] = React.useState("");
+  const [area, setArea] = React.useState("");
   const [status, setStatus] = React.useState("");
+  const [issue, setIssue] = React.useState("");
   const today = new Date();
 
   const handleCreate = async (e) => {
@@ -29,7 +30,8 @@ export default function UploadExpedient() {
             expediente,
             desc,
             title,
-            cat,
+            area,
+            issue,
             generatedAt: today,
             createdBy: user.email,
           }),
@@ -68,16 +70,29 @@ export default function UploadExpedient() {
           onChange={(e) => setDesc(e.target.value)}
         />
         <SelectInput
-          labelx="Categoria"
-          onChange={(e) => setCat(e.target.value)}
-          selectOptions={["Categoria 1", "Categoria 2", "Categoria 3"]}
-          state={cat}
+          labelx="Área"
+          onChange={(e) => setArea(e.target.value)}
+          selectOptions={["Legal", "Penal", "Jurídica", "Laboral"]}
+          state={area}
+        />
+        <SelectInput
+          labelx="Asunto"
+          onChange={(e) => setIssue(e.target.value)}
+          selectOptions={[
+            "Amparo",
+            "Laboral",
+            "Civil",
+            "Juicios de nulidad",
+            "Acción pública",
+            "Lesividad",
+          ]}
+          state={issue}
         />
         <SelectInput
           labelx="Estatus"
           onChange={(e) => setStatus(e.target.value)}
-          selectOptions={['En proceso', 'Finalizado']}
-          state={cat}
+          selectOptions={["En proceso", "Finalizado"]}
+          state={status}
         />
         <MainButton
           label="Crear expediente"

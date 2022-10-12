@@ -12,12 +12,14 @@ const TableRow = ({ data }) => (
         </span>
       </Link>
     </td>
+    <td>{data.area}</td>
+    <td>{data.issue}</td>
     <td>{data.createdBy}</td>
     <td>{data.generatedAt.split("T")[0]}</td>
   </tr>
 );
 
-export default function DataFilter({ title }) {
+export default function DataFilter({ title, filter }) {
   const [datax, setData] = React.useState("");
 
   React.useEffect(() => {
@@ -41,29 +43,42 @@ export default function DataFilter({ title }) {
       <h1 className="text-3xl font-bold text-center text-blue-900 m-4">
         Buscar expedientes de {title}
       </h1>
-      <div>{/** Add category information */}</div>
+      <div>{/** Add area information */}</div>
       <div className="flex flex-row justify-start items-start w-full">
-        <SelectInput label="Año" selectOptions={[2002, 2003, 2004]} />
-        <SelectInput label="Nombre" selectOptions={["Jane Doe", "John Doe"]} />
+        <SelectInput
+          labelx="Asunto"
+          selectOptions={[
+            "Amparo",
+            "Laboral",
+            "Civil",
+            "Juicios de nulidad",
+            "Acción pública",
+            "Lesividad",
+          ]}
+        />
       </div>
       <table className="w-full">
         <thead>
           <tr>
             <th>Expedientes</th>
             <th>Título</th>
+            <th>Área</th>
+            <th>Asunto</th>
             <th>Admin</th>
             <th>Fecha</th>
           </tr>
         </thead>
         <tbody>
           {/** Add filters */}
-          {datax.map((item) => (
-            <TableRow data={item} />
-          ))}
+          {filter !== "todo"
+            ? datax
+                .filter((item) => item.area === filter)
+                .map((item) => <TableRow data={item} />)
+            : datax.map((item) => <TableRow data={item} />)}
         </tbody>
       </table>
     </div>
   );
 
-  return <div>{datax ? <Show /> : <p>Loading...</p>}</div>;
+  return <div>{datax ? <Show /> : <p>No hay expedientes</p>}</div>;
 }
