@@ -3,15 +3,16 @@ import Image from "next/image";
 import MainButton from "../../buttons/mainButton/mainButton";
 import TextInput from "../../inputs/textInput/textInput";
 import { useAppContext } from "../../../context/AppContext";
+import SelectInput from "../../inputs/selectInput/SelectInput";
 
 // Add ref or onchange state management
 
-export default function MainAuth({ data, user }) {
+export default function MainAuth({ data, state }) {
   const { setUser } = useAppContext();
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [pass, setPass] = React.useState("");
-  const [action, setAction] = React.useState("login");
+  const [area, setArea] = React.useState("");
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ export default function MainAuth({ data, user }) {
       setUser(res);
     }
   };
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -57,12 +59,15 @@ export default function MainAuth({ data, user }) {
         <Image
           src={data.logo.src}
           alt={data.logo.alt}
-          width={150} 
+          width={150}
           height={50}
           objectFit="cover"
         />
-        {action === "login" ? (
+        {state === "login" ? (
           <>
+            <h1 className="text-3xl font-bold text-center text-blue-900 my-4">
+              Ingresa con tu cuenta
+            </h1>
             <TextInput
               labelx={"Correo"}
               placeholder="Ingresa tu correo"
@@ -79,18 +84,12 @@ export default function MainAuth({ data, user }) {
               hoverColor="hover:bg-blue-600"
               onClick={handleLogin}
             />
-            <p className="text-gray-500 text-sm mt-2">
-              ¿No tienes una cuenta?{" "}
-              <span
-                className="text-green-500 cursor-pointer"
-                onClick={() => setAction("signup")}
-              >
-                Registrate
-              </span>
-            </p>
           </>
         ) : (
           <>
+            <h1 className="text-3xl font-bold text-center text-blue-900 my-4">
+              Crea un nuevo usuario
+            </h1>
             <TextInput
               labelx={"Correo"}
               placeholder="Ingresa tu correo"
@@ -106,9 +105,11 @@ export default function MainAuth({ data, user }) {
               placeholder="Ingresa tu contraseña"
               onChange={(e) => setPass(e.target.value)}
             />
-            <TextInput
-              labelx={"Confirmar contraseña"}
-              placeholder="Ingresa tu contraseña"
+            <SelectInput
+              labelx={"Area"}
+              placeholder={"Area a la que pertenece"}
+              selectOptions={["Legal", "Penal", "Jurídica", "Laboral"]}
+              onChange={(e) => setArea(e.target.value)}
             />
             <MainButton
               label="Registrar"
