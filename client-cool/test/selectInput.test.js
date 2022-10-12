@@ -73,7 +73,7 @@ describe('Selector component tests', () => {
         expect(screen.getAllByRole('option').length).toBe(yearOptions.selectOptions.length)
     });
 
-    // NOT WORKING - CAN'T SELECT NAME WITHION APP
+    // NOT WORKING - CAN'T SELECT NAME WITHIN APP
     // it('should allow user to select name', () => {
     //     const { getByTestId, getAllByTestId } = render(<SelectInput
     //         label={nameOptions.label}
