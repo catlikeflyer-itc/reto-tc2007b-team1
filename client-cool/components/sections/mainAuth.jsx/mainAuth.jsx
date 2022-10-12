@@ -55,7 +55,7 @@ export default function MainAuth({ data, user }) {
             />
             <TextInput
               labelx={"Nombre"}
-              placeholder="John Doe"
+              placeholder="Ingresa tu nombre"
               onChange={(e) => setName(e.target.value)}
               
             />
