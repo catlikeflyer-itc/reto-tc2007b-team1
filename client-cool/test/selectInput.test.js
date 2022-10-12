@@ -2,80 +2,125 @@
  * @jest-environment jsdom
  */
 import React from 'react';
-import ReactTestUtils, { renderIntoDocument } from 'react-dom/test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 import { create } from 'react-test-renderer';
-import { render, cleanup } from '@testing-library/react'
+import { screen, render, fireEvent, cleanup, waitForElement, userEvent, getAllByRole, getAllByTestId } from '@testing-library/react'
 import SelectInput from '../components/inputs/selectInput/SelectInput';
 import dummyData from '../data/dummyData.json';
 
 afterEach(cleanup);
-describe('Text input component tests', () => {
-    it('should be created with intended data', () => {
-        const testUser = dummyData.users.find(e => e.id == 3)
+describe('Selector component tests', () => {
+
+    // Generate name options list from static data
+    const nameOptions = getNameOptions();
+    // Generate year options list from static data
+    const yearOptions = getYearOptions();
+
+    it('should create name selector with intended data', () => {
         const selectInput = create(<SelectInput
-            label='Nombre' 
-            selectOptions={[testUser.name]}
+            label={nameOptions.label}
+            selectOptions={nameOptions.selectOptions}
         />)
+        expect(selectInput).toBeTruthy();
+        ReactTestUtils.isDOMComponent(selectInput)
+    });
+
+    it('should render name selector with intended data', () => {
+        const { getByRole } = render(<SelectInput
+            label={nameOptions.label}
+            selectOptions={nameOptions.selectOptions}
+        />)
+        const selector = getByRole('combobox')
+
+        expect(selector).toBeTruthy();
+        ReactTestUtils.isDOMComponent(selector)
+    });
+
+    it('should create year selector with intended data', () => {
+        const selectInput = create(<SelectInput
+            label={yearOptions.label}
+            selectOptions={yearOptions.selectOptions}
+        />)
+        expect(selectInput).toBeTruthy();
         ReactTestUtils.isDOMComponent(selectInput)
     });
 
     it('should render year selector without errors', () => {
-        const mockedOnChange = jest.fn();
-        const { getByText } = render(<SelectInput 
-            options={getYearOptions()} 
-            onChange={mockedOnChange} />);
+        const { getByRole } = render(<SelectInput 
+            label={yearOptions.label}
+            selectOptions={yearOptions.selectOptions}
+        />);
 
-        const placeholder = getByText('Select an option');
+        const selector = getByRole('combobox')
 
-        expect(placeholder).toBeTruthy();
+        expect(selector).toBeTruthy();
+        ReactTestUtils.isDOMComponent(selector)
     });
 
-    it('should call onChange when selecting multiple options', async () => {
-        const mockedOnChange = jest.fn();
-        const { getByText, container } = render(<SelectInput 
-            options={getYearOptions()} 
-            onChange={mockedOnChange} />);
-        
-        const mySelectComponent = container.getElementsByClassName('mr-4 my-2');
-
-        expect(mySelectComponent).toBeDefined();
-        expect(mySelectComponent).not.toBeNull();
-        expect(mockedOnChange).toHaveBeenCalledTimes(0);
-
-        fireEvent.keyDown(mySelectComponent.firstChild, { key: 'ArrowDown' });
-        await waitForElement(() => getByText('Año'));
-        fireEvent.click(getByText('Año'));
-
-        expect(mockedOnChange).toHaveBeenCalledTimes(1);
-        expect(mockedOnChange).toHaveBeenCalledWith({label: 'Año', value: 2002});
+    it('should render correct number of name options', () => {
+        render(<SelectInput
+            label={nameOptions.label}
+            selectOptions={nameOptions.selectOptions}
+        />)
+        expect(screen.getAllByRole('option').length).toBe(nameOptions.selectOptions.length)
     });
 
-    it('should call onChange when filtering by input value', () => {
-        // render the component.
-
-        // simulate a change on the input field by typing "option 1".
-        
-        // know, based on my mockedOptions that the filtered result will be "Mocked option 1" and "Mocked option 10".
-        
-        // simulate 2 ArrowDown events.
-        
-        // check that the mockedOnChange is called with the 2nd filtered option with right label and value.
+    it('should render correct number of year options', () => {
+        render(<SelectInput
+            label={yearOptions.label}
+            selectOptions={yearOptions.selectOptions}
+        />)
+        expect(screen.getAllByRole('option').length).toBe(yearOptions.selectOptions.length)
     });
+
+    // NOT WORKING - CAN'T SELECT NAME WITHION APP
+    // it('should allow user to select name', () => {
+    //     const { getByTestId, getAllByTestId } = render(<SelectInput
+    //         label={nameOptions.label}
+    //         selectOptions={nameOptions.selectOptions}
+    //     />)
+
+    //     fireEvent.click(getByTestId('select'), { target: { value: nameOptions.selectOptions[0] } })
+    //     let options = getAllByTestId('select-option')
+
+    //     expect(options[0].selected).toBe(true);
+
+    //     for (var i = 1; i < options.length; i++) {
+    //         expect(options[i].selected).toBe(false);
+    //     }
+    // })
 })
 
 function getYearOptions() {
-    const mockedOptions = [{label: 'Año', values: []}];
+    const yearOptions = { label: 'Año', selectOptions: Array() };
     let arr = dummyData.dummyBuscador
 
     for (var i = 0; i < arr.length; i++) 
     {
         var fecha = arr[i].fecha.slice(0, 3)
-        if (!(mockedOptions[0].values.includes(fecha))) 
+        if (! (yearOptions.selectOptions.includes(fecha)) )
         {
-            mockedOptions[0].values.push(fecha);
+            yearOptions.selectOptions.push(fecha);
         } 
     }
 
-    mockedOptions[0].values.sort()
-    return mockedOptions;
+    yearOptions.selectOptions.sort();
+    return yearOptions;
+}
+
+function getNameOptions() {
+    const nameOptions = { label: 'Nombre', selectOptions: Array() };
+    let arr = dummyData.users
+
+    for (var i = 0; i < arr.length; i++) 
+    {
+        var nombre = arr[i].name
+        if (! (nameOptions.selectOptions.includes(nombre)) )
+        {
+            nameOptions.selectOptions.push(nombre);
+        } 
+    }
+
+    nameOptions.selectOptions.sort();
+    return nameOptions;
 }
