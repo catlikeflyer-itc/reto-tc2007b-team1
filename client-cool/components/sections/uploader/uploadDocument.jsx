@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MainButton from "../../buttons/mainButton/mainButton";
 import FileInput from "../../inputs/fileInput/fileInput";
 import SelectInput from "../../inputs/selectInput/SelectInput";
@@ -6,14 +6,33 @@ import TextAreaInput from "../../inputs/textArea/textAreaInput";
 import TextInput from "../../inputs/textInput/textInput";
 
 export default function UploadDocument() {
-    const [folio, setFolio] = React.useState("");
-    const [expediente, setExpediente] = React.useState("");
-    const [desc, setDesc] = React.useState("");
-    const [title, setTitle] = React.useState("");
-    const [type, setType] = React.useState("");
-    const [file, setFile] = React.useState("");
-    const [location, setLocation] = React.useState("");
+  const [folio, setFolio] = React.useState("");
+  const [expediente, setExpediente] = React.useState("");
+  const [desc, setDesc] = React.useState("");
+  const [title, setTitle] = React.useState("");
+  const [type, setType] = React.useState("");
+  const [file, setFile] = React.useState("");
+  const [location, setLocation] = React.useState("");
+
+  const [data, setData] = React.useState([]);
+  const [expList, setExpList] = React.useState([]);
   // React get file path
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      fetch("http://localhost:3000/api/expedientes/all-expedientes", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+        });
+    };
+    fetchData();
+  }, []);
 
   // handle upload
   //Document local storage
@@ -24,14 +43,18 @@ export default function UploadDocument() {
         Subir documento
       </h1>
       <div className="m-4 flex-col flex justify-start items-start">
-        <TextInput labelx="Folio" placeholder="Folio" onChange=
-        {(e) => setFolio(e.target.value)}
+        <TextInput
+          labelx="Folio"
+          placeholder="Folio"
+          onChange={(e) => setFolio(e.target.value)}
         />
         <SelectInput
           labelx="Expediente"
           placeholder="Expediente"
           onChange={(e) => setExpediente(e.target.value)}
-          selectOptions={["Expediente 1", "Expediente 2", "Expediente 3"]}
+          selectOptions={data.map((exp) => {
+            return exp.expediente;
+          })}
           state={expediente}
         />
         <TextInput
@@ -63,8 +86,7 @@ export default function UploadDocument() {
           label="Subir"
           onClick={() => console.log("Subir")}
           color="bg-blue-700"
-          hoverColor="bg-blue-500" 
-
+          hoverColor="bg-blue-500"
         />
       </div>
     </div>

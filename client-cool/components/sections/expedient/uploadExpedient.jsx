@@ -4,6 +4,7 @@ import SelectInput from "../../inputs/selectInput/SelectInput";
 import TextInput from "../../inputs/textInput/textInput";
 import TextAreaInput from "../../inputs/textArea/textAreaInput";
 import { useAppContext } from "../../../context/AppContext";
+import { useRouter } from "next/router";
 
 export default function UploadExpedient({ data }) {
   // React get file path
@@ -15,6 +16,8 @@ export default function UploadExpedient({ data }) {
   const [status, setStatus] = React.useState("");
   const [issue, setIssue] = React.useState("");
   const today = new Date();
+
+  const router = useRouter();
 
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -39,7 +42,8 @@ export default function UploadExpedient({ data }) {
       );
 
       res = await res.json();
-      alert(res.message);
+      alert("Expediente creado");
+      router.push("/");
     }
   };
 
