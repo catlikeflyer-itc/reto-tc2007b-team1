@@ -4,11 +4,13 @@ import MainButton from "../../buttons/mainButton/mainButton";
 import TextInput from "../../inputs/textInput/textInput";
 import { useAppContext } from "../../../context/AppContext";
 import SelectInput from "../../inputs/selectInput/SelectInput";
+import { useRouter } from "next/router";
 
 // Add ref or onchange state management
 
 export default function MainAuth({ data, state }) {
   const { setUser } = useAppContext();
+  const router = useRouter()
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [pass, setPass] = React.useState("");
@@ -31,6 +33,7 @@ export default function MainAuth({ data, state }) {
 
       res = await res.json();
       setUser(res);
+      router.push("/")
     }
   };
 
@@ -117,15 +120,7 @@ export default function MainAuth({ data, state }) {
               hoverColor="hover:bg-blue-600"
               onClick={handleSignup}
             />
-            <p className="text-gray-500 text-sm mt-2">
-              ¿Ya tienes una cuenta?{" "}
-              <span
-                className="text-green-500 cursor-pointer"
-                onClick={() => setAction("login")}
-              >
-                Inicia sesión
-              </span>
-            </p>
+           
           </>
         )}
       </div>
