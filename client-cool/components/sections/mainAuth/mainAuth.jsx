@@ -10,11 +10,50 @@ import { useRouter } from "next/router";
 
 export default function MainAuth({ data, state }) {
   const { setUser } = useAppContext();
-  const router = useRouter()
+  const router = useRouter();
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [pass, setPass] = React.useState("");
   const [area, setArea] = React.useState("");
+  const [level, setLevel] = React.useState("");
+
+  const levelPairs = [
+    {
+      slug: "admin-top",
+      title: "Administrador",
+    },
+    {
+      slug: "admin-mid",
+      title: "Administrador de área",
+    },
+    {
+      slug: "user",
+      title: "Usuario",
+    },
+  ];
+
+  const areas = [
+    {
+      slug: "legal",
+      title: "Legal",
+    },
+    {
+      slug: "penal",
+      title: "Penal",
+    },
+    {
+      slug: "juridica",
+      title: "Jurídica",
+    },
+    {
+      slug: "laboral",
+      title: "Laboral",
+    },
+    {
+      slug: "todos",
+      title: "todo",
+    },
+  ];
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -28,12 +67,14 @@ export default function MainAuth({ data, state }) {
           name,
           pass,
           email,
+          area: areas.find((a) => a.title === area).slug,
+          level: levelPairs.find((pair) => pair.title === level).slug,
         }),
       });
 
       res = await res.json();
       setUser(res);
-      router.push("/")
+      router.push("/");
     }
   };
 
@@ -111,8 +152,16 @@ export default function MainAuth({ data, state }) {
             <SelectInput
               labelx={"Area"}
               placeholder={"Area a la que pertenece"}
-              selectOptions={["Legal", "Penal", "Jurídica", "Laboral"]}
+              selectOptions={areas.map((area) => area.title)}
               onChange={(e) => setArea(e.target.value)}
+            />
+            <SelectInput
+              labelx={"Nivel administrativo"}
+              placeholder={"nivel administrativo"}
+              selectOptions={levelPairs.map((pair) => {
+                return pair.title;
+              })}
+              onChange={(e) => setLevel(e.target.value)}
             />
             <MainButton
               label="Registrar"
@@ -120,7 +169,6 @@ export default function MainAuth({ data, state }) {
               hoverColor="hover:bg-blue-600"
               onClick={handleSignup}
             />
-           
           </>
         )}
       </div>
