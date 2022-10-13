@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       try {
         const myExp = await db
           .collection("expedientes")
-          .findOne({ expediente: expedient });
+          .findOne({ expediente: parseInt(expedient) });
         if (myExp) {
           res.status(200).json(myExp);
         } else {

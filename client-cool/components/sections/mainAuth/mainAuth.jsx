@@ -75,7 +75,7 @@ export default function MainAuth({ data, state }) {
       });
 
       res = await res.json();
-      setUser(res);
+      alert("Usuario creado");
       router.push("/");
     }
   };

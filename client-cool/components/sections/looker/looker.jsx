@@ -97,7 +97,7 @@ export default function Looker({ data, routerParam }) {
           {exp.status}
         </span>
         {user.level === ("admin-mid" || "admin-top") ||
-          (user.permissions.includes(exp) && (
+          (user.permission.includes(exp) && (
             <MainButton
               color="green"
               label="Cambiar estatus"

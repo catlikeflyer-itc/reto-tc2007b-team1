@@ -14,10 +14,18 @@ export default function index() {
           <div className="flex flex-col justify-start items-start col-span-1 rounded-l-lg font-bold">
             <p>Nombre:</p>
             <p>Correo:</p>
+            <p>Area:</p>
+            <p>Permisos:</p>
           </div>
           <div className="flex flex-col justify-start items-end col-span-1 rounded-r-lg">
             <p>{user.name}</p>
             <p>{user.email}</p>
+            <p>{user.area}</p>
+            <p>
+              {user.permission.map((perm) => {
+                return perm + ", ";
+              })}
+            </p>
           </div>
         </div>
       )}
