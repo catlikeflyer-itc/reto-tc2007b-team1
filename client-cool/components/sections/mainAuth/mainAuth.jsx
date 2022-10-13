@@ -16,6 +16,7 @@ export default function MainAuth({ data, state }) {
   const [pass, setPass] = React.useState("");
   const [area, setArea] = React.useState("");
   const [level, setLevel] = React.useState("");
+  const [permission, setPermission] = React.useState(false);
 
   const levelPairs = [
     {
@@ -69,6 +70,7 @@ export default function MainAuth({ data, state }) {
           email,
           area: areas.find((a) => a.title === area).slug,
           level: levelPairs.find((pair) => pair.title === level).slug,
+          permission
         }),
       });
 
@@ -163,6 +165,13 @@ export default function MainAuth({ data, state }) {
               })}
               onChange={(e) => setLevel(e.target.value)}
             />
+            {level === "user" && (
+              <TextInput
+                labelx={"Expedientes permitidos"}
+                placeholder="Separa por coma los expedientes permitidos"
+                onChange={(e) => setPermission(e.target.value.split(","))}
+              />
+            )}
             <MainButton
               label="Registrar"
               color="bg-green-500"

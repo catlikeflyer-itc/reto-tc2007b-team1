@@ -37,6 +37,7 @@ export default function UploadExpedient({ data }) {
             issue,
             generatedAt: today,
             createdBy: user.email,
+            status,
           }),
         }
       );
@@ -61,7 +62,7 @@ export default function UploadExpedient({ data }) {
         <TextInput
           labelx="Expediente"
           placeholder="Num de expediente"
-          onChange={(e) => setExpediente(e.target.value)}
+          onChange={(e) => setExpediente(parseInt(e.target.value))}
         />
         <TextInput
           labelx="Título"
