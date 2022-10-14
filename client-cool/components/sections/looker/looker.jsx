@@ -78,13 +78,14 @@ export default function Looker({ data, routerParam }) {
         >
           {exp.status}
         </span>
-        {user.level === "admin-top" || user.permission.includes(exp.expediente)  && (
+        {user.level === "admin-top" ||
+          (user.permission.includes(exp.expediente.toString()) && (
             <MainButton
               color="green"
               label="Cambiar estatus"
               onClick={() => console.log()}
             />
-          )}
+          ))}
       </div>
       {docs &&
         docs.map((doc) => (
