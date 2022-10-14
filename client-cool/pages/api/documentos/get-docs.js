@@ -13,7 +13,8 @@ export default async function handler(req, res) {
         if (expedient) {
           const myExp = await db
             .collection("documentos")
-            .findOne({ expediente: expedient });
+            .find({ expediente: expedient })
+            .toArray();
           if (myExp) {
             res.status(200).json(myExp);
           } else {

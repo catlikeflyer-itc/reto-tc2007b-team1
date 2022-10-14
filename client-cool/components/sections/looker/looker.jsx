@@ -9,24 +9,6 @@ export default function Looker({ data, routerParam }) {
   const [exp, setExp] = React.useState({});
   const [docs, setDocs] = React.useState([]);
 
-  const DocShow = (doc) => (
-    <div className="m-4 grid grid-cols-1 md:grid-cols-2 rounded-lg bg-gray-200 shadow-xl">
-      <div className="flex flex-col justify-start items-start col-span-1 rounded-l-lg">
-        <embed
-          src="https://www.africau.edu/images/default/sample.pdf"
-          width="500"
-          height="375"
-          type="application/pdf"
-        />
-      </div>
-      <div className="flex flex-col justify-start items-start col-span-1 rounded-r-lg p-4">
-        <h1>Folio: {doc.expediente}</h1>
-        <h1>Fecha: {doc.generatedAt}</h1>
-        <h1>Admin: {doc.createdBy}</h1>
-      </div>
-    </div>
-  );
-
   React.useEffect(() => {
     const fetchData = async () => {
       fetch(
@@ -105,7 +87,24 @@ export default function Looker({ data, routerParam }) {
             />
           ))}
       </div>
-      {/*docs && docs.map((doc) => <DocShow doc={doc} />)*/}
+      {docs &&
+        docs.map((doc) => (
+          <div className="m-4 grid grid-cols-1 md:grid-cols-2 rounded-lg bg-gray-200 shadow-xl">
+            <div className="flex flex-col justify-start items-start col-span-1 rounded-l-lg">
+              <embed
+                src={doc.file}
+                width="500"
+                height="375"
+                type="application/pdf"
+              />
+            </div>
+            <div className="flex flex-col justify-start items-start col-span-1 rounded-r-lg p-4">
+              <h1>Folio: {doc.folio}</h1>
+              <h1>Fecha: {doc.generatedAt}</h1>
+              <h1>Admin: {doc.createdBy}</h1>
+            </div>
+          </div>
+        ))}
     </div>
   );
 }

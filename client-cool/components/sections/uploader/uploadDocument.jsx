@@ -5,6 +5,8 @@ import SelectInput from "../../inputs/selectInput/SelectInput";
 import TextAreaInput from "../../inputs/textArea/textAreaInput";
 import TextInput from "../../inputs/textInput/textInput";
 import { useAppContext } from "../../../context/AppContext";
+import FileBase64 from "react-file-base64";
+import { useRouter } from "next/router";
 
 export default function UploadDocument() {
   const [folio, setFolio] = React.useState("");
@@ -13,9 +15,11 @@ export default function UploadDocument() {
   const [title, setTitle] = React.useState("");
   const [type, setType] = React.useState("");
   const [file, setFile] = React.useState("");
+  const [fileDone, setFileDone] = React.useState(false);
   const [location, setLocation] = React.useState("");
   const { user } = useAppContext();
   const today = new Date();
+  const router = useRouter();
 
   const [data, setData] = React.useState([]);
   // React get file path
@@ -44,7 +48,7 @@ export default function UploadDocument() {
       alert("Please fill all fields");
     } else {
       let res = await fetch(
-        "http://localhost:3000/api/documents/create-document",
+        "http://localhost:3000/api/documentos/create-document",
         {
           method: "POST",
           body: JSON.stringify({
@@ -103,22 +107,25 @@ export default function UploadDocument() {
           placeholder="Tipo"
           onChange={(e) => setType(e.target.value)}
         />
-        <FileInput
-          labelx="Archivo"
-          placeholder="Archivo"
-          onChange={(e) => setFile(e.target.files[0])}
+        <FileBase64
+          multiple={false}
+          onDone={(file) => {
+            setFileDone(true);
+            console.log("done");
+            setFile(file.base64);
+          }}
         />
+
         <TextAreaInput
           labelx="Ubicación"
           placeholder="Ubicación fisica del documento"
           onChange={(e) => setLocation(e.target.value)}
         />
-        <MainButton
-          label="Subir"
-          onClick={handleCreate}
-          color="bg-blue-700"
-          hoverColor="bg-blue-500"
-        />
+        {fileDone ? (
+          <MainButton label="Subir" onClick={handleCreate} color="blue" />
+        ) : (
+          "Subiendo Archivo..."
+        )}
       </div>
     </div>
   );
