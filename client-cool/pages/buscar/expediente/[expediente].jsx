@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import Looker from "../../../components/sections/looker/looker";
 import dummy from "../../../data/dummyData.json";
