@@ -27,7 +27,7 @@ export default function index() {
           </p>
         </div>
       ) : (
-        router.push("/")
+        <div onLoad={() => router.push("/")}>Ingrese con su cuenta primero</div>
       )}
     </div>
   );

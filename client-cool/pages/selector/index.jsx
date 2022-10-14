@@ -8,5 +8,13 @@ export default function index() {
   const { user } = useAppContext();
   const router = useRouter();
 
-  return <>{user ? <Selector data={data.selector} /> : router.push("/")}</>;
+  return (
+    <>
+      {user ? (
+        <Selector data={data.selector} />
+      ) : (
+        <div onLoad={() => router.push("/")}>Ingrese con su cuenta primero</div>
+      )}
+    </>
+  );
 }

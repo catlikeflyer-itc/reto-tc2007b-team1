@@ -7,5 +7,13 @@ export default function index() {
   const { user } = useAppContext();
   const router = useRouter();
 
-  return <>{user ? <UploadDocument /> : router.push("/")}</>;
+  return (
+    <>
+      {user ? (
+        <UploadDocument />
+      ) : (
+        <div onLoad={() => router.push("/")}>Ingrese con su cuenta primero</div>
+      )}
+    </>
+  );
 }
