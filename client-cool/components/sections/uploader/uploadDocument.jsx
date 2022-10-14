@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MainButton from "../../buttons/mainButton/mainButton";
-import FileInput from "../../inputs/fileInput/fileInput";
 import SelectInput from "../../inputs/selectInput/SelectInput";
 import TextAreaInput from "../../inputs/textArea/textAreaInput";
 import TextInput from "../../inputs/textInput/textInput";
@@ -44,7 +43,14 @@ export default function UploadDocument() {
   const handleCreate = async (e) => {
     e.preventDefault();
 
-    if (expediente === "" || title === "" || type === "" || location === "" || desc === "" || file === "") {
+    if (
+      expediente === "" ||
+      title === "" ||
+      type === "" ||
+      location === "" ||
+      desc === "" ||
+      file === ""
+    ) {
       alert("Todos los campos son obligatorios");
     } else {
       let res = await fetch(

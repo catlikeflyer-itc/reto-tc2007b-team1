@@ -12,5 +12,7 @@ export default function index() {
     return <Categorizer data={data.categorizer} />;
   } else if (user.level === "admin-mid") {
     router.push(`/buscar/${user.area}`);
+  } else {
+    router.push("/");
   }
 }

@@ -1,6 +1,11 @@
 import React from "react";
 import UploadExpedient from "../../components/sections/expedient/uploadExpedient";
+import { useRouter } from "next/router";
+import { useAppContext } from "../../context/AppContext";
 
 export default function index() {
-  return <UploadExpedient />;
+  const { user } = useAppContext();
+  const router = useRouter();
+
+  return <>{user ? <UploadExpedient /> : router.push("/")}</>;
 }

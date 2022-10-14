@@ -1,15 +1,17 @@
 import React from "react";
 import { useAppContext } from "../../context/AppContext";
+import { useRouter } from "next/router";
 
 export default function index() {
   const { user } = useAppContext();
+  const router = useRouter();
 
   return (
     <div className="container flex flex-col justify-start items-center m-4 mb-64">
       <h1 className="text-3xl font-bold text-center text-blue-900 m-4">
         Mi perfil
       </h1>
-      {user && (
+      {user ? (
         <div className="m-4 grid grid-cols-2 rounded-lg">
           <p className="font-bold text-blue-900 m-2">Nombre:</p>
           <p className="m-2">{user.name}</p>
@@ -24,6 +26,8 @@ export default function index() {
             })}
           </p>
         </div>
+      ) : (
+        router.push("/")
       )}
     </div>
   );
