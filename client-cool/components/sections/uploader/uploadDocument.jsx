@@ -44,8 +44,8 @@ export default function UploadDocument() {
   const handleCreate = async (e) => {
     e.preventDefault();
 
-    if (expediente === "" || title === "") {
-      alert("Please fill all fields");
+    if (expediente === "" || title === "" || type === "" || location === "" || desc === "" || file === "") {
+      alert("Todos los campos son obligatorios");
     } else {
       let res = await fetch(
         "http://localhost:3000/api/documentos/create-document",

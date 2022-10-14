@@ -59,8 +59,8 @@ export default function MainAuth({ data, state }) {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    if (name === "" || email === "" || pass === "") {
-      alert("Please fill all fields");
+    if (name === "" || email === "" || pass === "" || area === "" || level === "" || permission === []) {
+      alert("Por favor, rellena todos los campos");
     } else {
       let res = await fetch("http://localhost:3000/api/auth/signup", {
         method: "POST",
@@ -84,7 +84,7 @@ export default function MainAuth({ data, state }) {
     e.preventDefault();
 
     if (email === "" || pass === "") {
-      alert("Please fill all fields");
+      alert("Revisa los campos");
     } else {
       let res = await fetch(
         `http://localhost:3000/api/auth/login?email=${email}&password=${pass}`,

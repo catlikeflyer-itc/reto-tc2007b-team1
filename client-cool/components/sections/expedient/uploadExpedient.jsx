@@ -22,8 +22,8 @@ export default function UploadExpedient({ data }) {
   const handleCreate = async (e) => {
     e.preventDefault();
 
-    if (expediente === "" || title === "") {
-      alert("Please fill all fields");
+    if (expediente === "" || title === "" || area === "" || status === "" || issue === "" || desc === "") {
+      alert("Todos los campos son obligatorios");
     } else {
       let res = await fetch(
         "http://localhost:3000/api/expedientes/create-expediente",
