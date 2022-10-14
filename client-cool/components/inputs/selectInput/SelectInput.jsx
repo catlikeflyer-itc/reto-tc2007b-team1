@@ -1,17 +1,24 @@
 import React from "react";
 
-export default function SelectInput({ label, selectOptions }, props) {
+export default function SelectInput(
+  { labelx, selectOptions, onChange },
+  props
+) {
   return (
     <div className="mr-4 my-2">
-      <label htmlFor={label}>{label}</label>
+      <label htmlFor={labelx}>{labelx}</label>
       <select
         {...props}
-        id={label}
-        name={label}
+        id={labelx}
+        name={labelx}
         className="border-2 border-gray-300 rounded-lg p-2 w-full shadow-xl text-black bg-slate-200"
+        onChange={onChange}
       >
+        <option value="" selected disabled>
+          Elige una opcion
+        </option>
         {selectOptions.map((option) => (
-          <option value={option.value}>{option.label}</option>
+          <option value={option}>{option}</option>
         ))}
       </select>
     </div>

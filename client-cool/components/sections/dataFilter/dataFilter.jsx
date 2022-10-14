@@ -1,55 +1,84 @@
 import Link from "next/link";
 import React from "react";
-import DownloadButton from "../../buttons/downloadButton/downloadButton";
 import SelectInput from "../../inputs/selectInput/SelectInput";
 
 const TableRow = ({ data }) => (
   <tr>
-    <td>{data.folio}</td>
+    <td>{data.expediente}</td>
     <td>
-      <Link
-        href={"/buscar/folio/" + data.folio}
-        className="underline text-blue-500 hover:text-cyan-300"
-      >
-        {data.title}
+      <Link href={"/buscar/expediente/" + data.expediente}>
+        <span className="underline text-blue-500 hover:text-cyan-300">
+          {data.title}
+        </span>
       </Link>
     </td>
-    <td>{data.admin}</td>
-    <td>{data.fecha}</td>
-    <td>
-      <DownloadButton link={data.link} />
-    </td>
+    <td>{data.area}</td>
+    <td>{data.issue}</td>
+    <td>{data.createdBy}</td>
+    <td>{data.generatedAt.split("T")[0]}</td>
   </tr>
 );
 
-export default function DataFilter({ data, title }) {
-  return (
+export default function DataFilter({ title, filter }) {
+  const [datax, setData] = React.useState("");
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      fetch("http://localhost:3000/api/expedientes/all-expedientes", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+        });
+    };
+    fetchData();
+  }, []);
+
+  const Show = () => (
     <div className="container flex flex-col justify-start items-center m-4 mb-64">
       <h1 className="text-3xl font-bold text-center text-blue-900 m-4">
-        Buscar archivos de {title}
+        Buscar expedientes de {title}
       </h1>
-      <div>{/** Add category information */}</div>
+      <div>{/** Add area information */}</div>
       <div className="flex flex-row justify-start items-start w-full">
-        <SelectInput label="Año" selectOptions={[2002, 2003, 2004]} />
-        <SelectInput label="Nombre" selectOptions={["Jane Doe", "John Doe"]} />
+        <SelectInput
+          labelx="Asunto"
+          selectOptions={[
+            "Amparo",
+            "Laboral",
+            "Civil",
+            "Juicios de nulidad",
+            "Acción pública",
+            "Lesividad",
+          ]}
+        />
       </div>
       <table className="w-full">
         <thead>
           <tr>
-            <th>Folio</th>
+            <th>Expedientes</th>
             <th>Título</th>
+            <th>Área</th>
+            <th>Asunto</th>
             <th>Admin</th>
             <th>Fecha</th>
-            <th>Descargar</th>
           </tr>
         </thead>
         <tbody>
           {/** Add filters */}
-          {data.map((item) => (
-            <TableRow data={item} />
-          ))}
+          {filter !== "todo"
+            ? datax
+                .filter((item) => item.area === filter)
+                .map((item) => <TableRow data={item} />)
+            : datax.map((item) => <TableRow data={item} />)}
         </tbody>
       </table>
     </div>
   );
+
+  return <div>{datax ? <Show /> : <p>No hay expedientes</p>}</div>;
 }
