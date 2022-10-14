@@ -78,14 +78,13 @@ export default function Looker({ data, routerParam }) {
         >
           {exp.status}
         </span>
-        {user.level === ("admin-mid" || "admin-top") ||
-          (user.permission.includes(exp) && (
+        {user.level === "admin-top" || user.permission.includes(exp.expediente)  && (
             <MainButton
               color="green"
               label="Cambiar estatus"
               onClick={() => console.log()}
             />
-          ))}
+          )}
       </div>
       {docs &&
         docs.map((doc) => (
@@ -101,7 +100,7 @@ export default function Looker({ data, routerParam }) {
             <div className="flex flex-col justify-start items-start col-span-1 rounded-r-lg p-4">
               <h1>Folio: {doc.folio}</h1>
               <h1>Fecha: {doc.generatedAt}</h1>
-              <h1>Admin: {doc.createdBy}</h1>
+              <h1>Subido por: {doc.createdBy}</h1>
             </div>
           </div>
         ))}

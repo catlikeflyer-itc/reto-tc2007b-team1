@@ -92,9 +92,13 @@ export default function MainAuth({ data, state }) {
           method: "GET",
         }
       );
-
-      res = await res.json();
-      setUser(res);
+      if (res.status === 200) {
+        res = await res.json();
+        setUser(res);
+        router.push("/");
+      } else {
+        alert("Usuario no encontrado");
+      }
     }
   };
 
