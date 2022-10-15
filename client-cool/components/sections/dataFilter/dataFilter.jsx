@@ -21,6 +21,7 @@ const TableRow = ({ data }) => (
 
 export default function DataFilter({ title, filter }) {
   const [datax, setData] = React.useState("");
+  const [filterx, setFilter] = React.useState("");
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -55,6 +56,7 @@ export default function DataFilter({ title, filter }) {
             "Acción pública",
             "Lesividad",
           ]}
+          onChange={(e) => setFilter(e.target.value)}
         />
       </div>
       <table className="w-full">
@@ -71,10 +73,15 @@ export default function DataFilter({ title, filter }) {
         <tbody>
           {/** Add filters */}
           {filter !== "todo"
+            ? datax.map((item) => <TableRow data={item} />)
+            : filterx === ""
             ? datax
                 .filter((item) => item.area === filter)
                 .map((item) => <TableRow data={item} />)
-            : datax.map((item) => <TableRow data={item} />)}
+            : datax
+                .filter((item) => item.area === filter)
+                .filter((item) => item.issue === filterx)
+                .map((item) => <TableRow data={item} />)}
         </tbody>
       </table>
     </div>
