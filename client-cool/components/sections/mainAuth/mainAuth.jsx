@@ -118,7 +118,15 @@ export default function MainAuth({ data, state }) {
 
   return (
     <div className="w-screen grid md:grid-cols-2 grid-cols-1 min-h-screen">
-      <div className="h-full md:col-span-1 hidden md:block bg-green-500" />
+      <div
+        className="h-full md:col-span-1 hidden md:block"
+        style={{
+          backgroundImage:
+            "url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/MonumentAlvaroObrgonDF.JPG/1200px-MonumentAlvaroObrgonDF.JPG')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
       <div className="h-full md:col-span-1 flex flex-col items-start justify-start p-4">
         <Image
           src={data.logo.src}
