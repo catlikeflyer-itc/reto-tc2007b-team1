@@ -21,9 +21,11 @@ export default function index() {
           <p className="m-2">{user.level}</p>
           <p className="font-bold text-blue-900 m-2">Permisos:</p>
           <p className="m-2">
-            {user.permission.map((perm) => {
-              return perm + ", ";
-            })}
+            {user.permission
+              ? user.permission.map((perm) => {
+                  return perm + ", ";
+                })
+              : "Este usuario tiene todos los permisos"}
           </p>
         </div>
       ) : (

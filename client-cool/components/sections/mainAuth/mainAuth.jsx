@@ -93,6 +93,8 @@ export default function MainAuth({ data, state }) {
 
     if (email === "" || pass === "") {
       alert("Revisa los campos");
+    } else if (pass.length < 6) {
+      alert("La contraseña debe tener al menos 6 caracteres");
     } else {
       let res = await fetch(
         `http://localhost:3000/api/auth/login?email=${email}&password=${pass}`,
@@ -149,6 +151,7 @@ export default function MainAuth({ data, state }) {
               labelx={"Contraseña"}
               placeholder="Ingresa tu contraseña"
               onChange={(e) => setPass(e.target.value)}
+              type="password"
             />
             <MainButton
               label="Iniciar sesión"
