@@ -5,6 +5,7 @@ import TextInput from "../../inputs/textInput/textInput";
 import { useAppContext } from "../../../context/AppContext";
 import SelectInput from "../../inputs/selectInput/SelectInput";
 import { useRouter } from "next/router";
+import { compare, hash } from "bcryptjs";
 
 // Add ref or onchange state management
 
@@ -59,7 +60,14 @@ export default function MainAuth({ data, state }) {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    if (name === "" || email === "" || pass === "" || area === "" || level === "" || permission === []) {
+    if (
+      name === "" ||
+      email === "" ||
+      pass === "" ||
+      area === "" ||
+      level === "" ||
+      permission === []
+    ) {
       alert("Por favor, rellena todos los campos");
     } else {
       let res = await fetch("http://localhost:3000/api/auth/signup", {
@@ -70,7 +78,7 @@ export default function MainAuth({ data, state }) {
           email,
           area: areas.find((a) => a.title === area).slug,
           level: levelPairs.find((pair) => pair.title === level).slug,
-          permission
+          permission,
         }),
       });
 
@@ -94,8 +102,14 @@ export default function MainAuth({ data, state }) {
       );
       if (res.status === 200) {
         res = await res.json();
-        setUser(res);
-        router.push("/");
+        compare(pass, res.pass, (err, result) => {
+          if (result) {
+            setUser(res);
+            router.push("/");
+          } else {
+            alert("Contraseña incorrecta");
+          }
+        });
       } else {
         alert("Usuario no encontrado");
       }
@@ -153,7 +167,11 @@ export default function MainAuth({ data, state }) {
             <TextInput
               labelx={"Contraseña"}
               placeholder="Ingresa tu contraseña"
-              onChange={(e) => setPass(e.target.value)}
+              onChange={(e) =>
+                hash(e.target.value, 8, function (err, hash) {
+                  setPass(hash);
+                })
+              }
             />
             <SelectInput
               labelx={"Area"}

@@ -1,5 +1,4 @@
 import clientPromise from "../../../lib/mongodb";
-import { getSession } from "../../../lib/get-session";
 
 export default async function handler(req, res) {
   const client = await clientPromise;
