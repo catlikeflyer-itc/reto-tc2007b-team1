@@ -1,5 +1,5 @@
 import clientPromise from "../../../lib/mongodb";
-import { getSession } from "../../../lib/get-session";
+import { compareSync } from "bcryptjs";
 
 export default async function handler(req, res) {
   const client = await clientPromise;
@@ -10,16 +10,14 @@ export default async function handler(req, res) {
       const query = req.query;
       const { email, password } = query;
       try {
-        const myUser = await db
-          .collection("users")
-          .findOne({ email, pass: password });
+        const myUser = await db.collection("users").findOne({ email });
         if (myUser) {
           res.status(200).json(myUser);
         } else {
           res.status(404).json({ message: "User not found" });
         }
       } catch (error) {
-        res.status(500).json({ message: "Error inserting user" });
+        res.status(500).json({ message: "Error getting user" });
       }
   }
 }
