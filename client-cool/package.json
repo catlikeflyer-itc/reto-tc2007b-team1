@@ -11,6 +11,8 @@
   "dependencies": {
     "dgram": "^1.0.1",
     "dns": "^0.2.2",
+    "dotenv": "^16.0.3",
+    "encrypt-rsa": "^2.1.2",
     "fs": "^0.0.1-security",
     "mongodb": "^4.10.0",
     "net": "^1.0.2",
