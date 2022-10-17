@@ -41,6 +41,20 @@ export default function Looker({ routerParam }) {
           setExp(data);
         });
     };
+    const updateData = async () => {
+      fetch(
+        "http://localhost:3000/api/expedientes/log?expedient=" + expediente,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: user.name,
+          }),
+        }
+      );
+    };
 
     fetchData();
     fetchData2();
@@ -92,6 +106,17 @@ export default function Looker({ routerParam }) {
           Encargadx:
         </span>
         <p className="my-2">{exp.createdBy}</p>
+        <span className="text-md font-bold text-left text-blue-900 my-2">
+          Historial
+        </span>
+        <div className="overflow-visible bg-white p-2 my-2">
+          {exp.log &&
+            exp.log.map((item, index) => (
+              <p key={index} className="my-2">
+                {item}
+              </p>
+            ))}
+        </div>
         <span
           className={`text-md font-bold text-left ${
             exp.status === "En proceso" ? "text-green-500" : "text-red-500"
