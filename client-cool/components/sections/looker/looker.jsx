@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { useAppContext } from "../../../context/AppContext";
 import MainButton from "../../buttons/mainButton/mainButton";
@@ -7,6 +8,7 @@ export default function Looker({ routerParam }) {
   const { user } = useAppContext();
   const [exp, setExp] = React.useState({});
   const [docs, setDocs] = React.useState([]);
+  const router = useRouter();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -44,6 +46,24 @@ export default function Looker({ routerParam }) {
     fetchData2();
   }, []);
 
+  const handleUpdate = () => {
+    fetch("http://localhost:3000/api/expedientes/update-expediente", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        exp
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        alert("Expediente actualizado");
+        router.push("/");
+      });
+  };
+
   return (
     <div className="container flex flex-col justify-start items-center m-4 mb-64">
       <h1 className="text-3xl font-bold text-center text-blue-900 m-4">
@@ -77,12 +97,12 @@ export default function Looker({ routerParam }) {
         >
           {exp.status}
         </span>
-        {user.level === "admin-top" ||
-          (user.permission && user.permission.includes(exp.expediente) && (
+        {user.permission === false ||
+          (user.permission.includes(exp.expediente) && (
             <MainButton
               color="green"
               label="Cambiar estatus"
-              onClick={() => console.log()}
+              onClick={handleUpdate}
             />
           ))}
       </div>
