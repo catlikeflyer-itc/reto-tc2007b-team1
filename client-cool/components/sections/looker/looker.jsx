@@ -58,6 +58,7 @@ export default function Looker({ routerParam }) {
 
     fetchData();
     fetchData2();
+    updateData();
   }, []);
 
   const handleUpdate = () => {
@@ -125,7 +126,8 @@ export default function Looker({ routerParam }) {
           {exp.status}
         </span>
         {(user.permission === false ||
-          user.permission.includes(exp.expediente)) &&
+          user.permission.includes(exp.expediente) ||
+          user.email === exp.createdBy) &&
         exp.status !== "Finalizado" ? (
           <MainButton
             color="green"
