@@ -5110,7 +5110,7 @@
     "merge-stream" "^2.0.0"
     "supports-color" "^8.0.0"
 
-"jest@^29.1.2":
+"jest@^29.2.0":
   "integrity" "sha512-6krPemKUXCEu5Fh3j6ZVoLMjpTQVm0OCU+7f3K/9gllX8wNIE6NSCQ6s0q2RDoiKLRaQlVRHyscjSPRPqCI0Fg=="
   "resolved" "https://registry.npmjs.org/jest/-/jest-29.2.0.tgz"
   "version" "29.2.0"
