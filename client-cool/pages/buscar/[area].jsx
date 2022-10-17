@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import DataFilter from "../../components/sections/dataFilter/dataFilter";
-import dummy from "../../data/dummyData.json";
 
 // Add getStaticProps to fetch real data
 
@@ -35,7 +34,7 @@ export default function Tipo() {
 
   useEffect(() => {
     setType(areas.find((item) => item.slug === area));
-  }, [area]);
+  }, []);
 
   return <DataFilter title={type.title} filter={type.slug} />;
 }
