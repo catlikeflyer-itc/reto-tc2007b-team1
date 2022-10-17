@@ -108,7 +108,7 @@ export default function Looker({ routerParam }) {
         <span className="text-md font-bold text-left text-blue-900 my-2">
           Historial
         </span>
-        <div className="overflow-scroll bg-gray-100 p-2 my-2 max-h-24">
+        <div className="overflow-scroll rounded-lg bg-gray-100 p-2 my-2 max-h-24">
           {exp.logs &&
             exp.logs.map((item, index) => (
               <p key={index} className="my-2">
