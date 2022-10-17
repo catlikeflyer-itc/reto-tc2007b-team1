@@ -14,7 +14,7 @@ export default async function handler(req, res) {
           .collection("expedientes")
           .update(
             { expediente: parseInt(expedient) },
-            { $set: { logs: timestamp } }
+            { $push: { logs: timestamp } }
           );
         res.status(200).json(myExpedient);
       } catch (error) {
