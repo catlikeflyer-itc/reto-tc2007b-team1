@@ -25,7 +25,7 @@ export default function UploadDocument() {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      fetch("http://localhost:3000/api/expedientes/all-expedientes", {
+      fetch("https://localhost:3000/api/expedientes/all-expedientes", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default function UploadDocument() {
       alert("Todos los campos son obligatorios");
     } else {
       let res = await fetch(
-        "http://localhost:3000/api/documentos/create-document",
+        "https://localhost:3000/api/documentos/create-document",
         {
           method: "POST",
           body: JSON.stringify({

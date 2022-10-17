@@ -71,7 +71,7 @@ export default function MainAuth({ data, state }) {
     } else if (pass.length < 6) {
       alert("La contraseña debe tener al menos 6 caracteres");
     } else {
-      let res = await fetch("http://localhost:3000/api/auth/signup", {
+      let res = await fetch("https://localhost:3000/api/auth/signup", {
         method: "POST",
         body: JSON.stringify({
           name,
@@ -99,7 +99,7 @@ export default function MainAuth({ data, state }) {
       alert("Revisa los campos");
     } else {
       let res = await fetch(
-        `http://localhost:3000/api/auth/login?email=${email}&password=${pass}`,
+        `https://localhost:3000/api/auth/login?email=${email}&password=${pass}`,
         {
           method: "GET",
         }
