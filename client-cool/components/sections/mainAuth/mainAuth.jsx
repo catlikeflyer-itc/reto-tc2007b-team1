@@ -17,7 +17,7 @@ export default function MainAuth({ data, state }) {
   const [pass, setPass] = React.useState("");
   const [area, setArea] = React.useState("");
   const [level, setLevel] = React.useState("");
-  const [permission, setPermission] = React.useState(false);
+  const [permission, setPermission] = React.useState([]);
 
   const levelPairs = [
     {
@@ -26,10 +26,13 @@ export default function MainAuth({ data, state }) {
     },
     {
       slug: "admin-mid",
+      title: "Administrador de área",
+    },
+    {
+      slug: "admin-low",
       title: "Usuario",
     },
   ];
-
   const areas = [
     {
       slug: "legal",
@@ -72,9 +75,9 @@ export default function MainAuth({ data, state }) {
           name,
           pass,
           email,
-          area: areas.find((a) => a.title === area).slug,
+          area: areas.find((item) => item.title === area).slug,
           level: levelPairs.find((pair) => pair.title === level).slug,
-          permission,
+          permission: permission.map((item) => parseInt(item)),
         }),
       });
 
@@ -181,12 +184,6 @@ export default function MainAuth({ data, state }) {
               }
             />
             <SelectInput
-              labelx={"Area"}
-              placeholder={"Area a la que pertenece"}
-              selectOptions={areas.map((area) => area.title)}
-              onChange={(e) => setArea(e.target.value)}
-            />
-            <SelectInput
               labelx={"Nivel administrativo"}
               placeholder={"nivel administrativo"}
               selectOptions={levelPairs.map((pair) => {
@@ -195,6 +192,15 @@ export default function MainAuth({ data, state }) {
               onChange={(e) => setLevel(e.target.value)}
             />
             {level !== "Administrador" && (
+              <SelectInput
+                labelx={"Area"}
+                placeholder={"Area a la que pertenece"}
+                selectOptions={areas.map((area) => area.title)}
+                onChange={(e) => setArea(e.target.value)}
+              />
+            )}
+
+            {level === "Usuario" && (
               <TextInput
                 labelx={"Expedientes permitidos"}
                 placeholder="Separa por coma los expedientes permitidos"

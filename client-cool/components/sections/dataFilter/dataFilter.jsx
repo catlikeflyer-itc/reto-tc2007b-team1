@@ -1,6 +1,28 @@
 import Link from "next/link";
 import React from "react";
-import SelectInput from "../../inputs/selectInput/SelectInput";
+
+const areas = [
+  {
+    slug: "legal",
+    title: "Legal",
+  },
+  {
+    slug: "penal",
+    title: "Penal",
+  },
+  {
+    slug: "juridica",
+    title: "Jurídica",
+  },
+  {
+    slug: "laboral",
+    title: "Laboral",
+  },
+  {
+    slug: "todos",
+    title: "todo",
+  },
+];
 
 const TableRow = ({ data }) => (
   <tr>
@@ -12,7 +34,7 @@ const TableRow = ({ data }) => (
         </span>
       </Link>
     </td>
-    <td>{data.area}</td>
+    <td>{areas.find((item) => item.slug === data.area).title}</td>
     <td>{data.issue}</td>
     <td>{data.createdBy}</td>
     <td>{data.generatedAt.split("T")[0]}</td>
@@ -21,7 +43,6 @@ const TableRow = ({ data }) => (
 
 export default function DataFilter({ title, filter }) {
   const [datax, setData] = React.useState("");
-  const [filterx, setFilter] = React.useState("");
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -45,20 +66,6 @@ export default function DataFilter({ title, filter }) {
         Buscar expedientes de {title}
       </h1>
       <div>{/** Add area information */}</div>
-      <div className="flex flex-row justify-start items-start w-full">
-        <SelectInput
-          labelx="Asunto"
-          selectOptions={[
-            "Amparo",
-            "Laboral",
-            "Civil",
-            "Juicios de nulidad",
-            "Acción pública",
-            "Lesividad",
-          ]}
-          onChange={(e) => setFilter(e.target.value)}
-        />
-      </div>
       <table className="w-full">
         <thead>
           <tr>
@@ -72,15 +79,10 @@ export default function DataFilter({ title, filter }) {
         </thead>
         <tbody>
           {/** Add filters */}
-          {filter !== "todo"
+          {filter === "todos"
             ? datax.map((item) => <TableRow data={item} />)
-            : filterx === ""
-            ? datax
-                .filter((item) => item.area === filter)
-                .map((item) => <TableRow data={item} />)
             : datax
                 .filter((item) => item.area === filter)
-                .filter((item) => item.issue === filterx)
                 .map((item) => <TableRow data={item} />)}
         </tbody>
       </table>

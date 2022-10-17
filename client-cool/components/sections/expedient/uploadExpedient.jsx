@@ -6,13 +6,32 @@ import TextAreaInput from "../../inputs/textArea/textAreaInput";
 import { useAppContext } from "../../../context/AppContext";
 import { useRouter } from "next/router";
 
+const areas = [
+  {
+    slug: "legal",
+    title: "Legal",
+  },
+  {
+    slug: "penal",
+    title: "Penal",
+  },
+  {
+    slug: "juridica",
+    title: "Jurídica",
+  },
+  {
+    slug: "laboral",
+    title: "Laboral",
+  },
+];
+
 export default function UploadExpedient() {
   // React get file path
   const { user } = useAppContext();
   const [expediente, setExpediente] = React.useState("");
   const [desc, setDesc] = React.useState("");
   const [title, setTitle] = React.useState("");
-  const [area, setArea] = React.useState("");
+  const [area, setArea] = React.useState("todo");
   const [status, setStatus] = React.useState("");
   const [issue, setIssue] = React.useState("");
   const today = new Date();
@@ -22,7 +41,14 @@ export default function UploadExpedient() {
   const handleCreate = async (e) => {
     e.preventDefault();
 
-    if (expediente === "" || title === "" || area === "" || status === "" || issue === "" || desc === "") {
+    if (
+      expediente === "" ||
+      title === "" ||
+      area === "" ||
+      status === "" ||
+      issue === "" ||
+      desc === ""
+    ) {
       alert("Todos los campos son obligatorios");
     } else {
       let res = await fetch(
@@ -33,7 +59,10 @@ export default function UploadExpedient() {
             expediente,
             desc,
             title,
-            area,
+            area:
+              user.level === "admin-top"
+                ? areas.find((item) => item.title === area).slug
+                : user.area,
             issue,
             generatedAt: today,
             createdBy: user.email,
@@ -74,12 +103,15 @@ export default function UploadExpedient() {
           placeholder="Descripción"
           onChange={(e) => setDesc(e.target.value)}
         />
-        <SelectInput
-          labelx="Área"
-          onChange={(e) => setArea(e.target.value)}
-          selectOptions={["Legal", "Penal", "Jurídica", "Laboral"]}
-          state={area}
-        />
+        {user.level === "admin-top" && (
+          <SelectInput
+            labelx="Área"
+            onChange={(e) => setArea(e.target.value)}
+            selectOptions={["Legal", "Penal", "Jurídica", "Laboral"]}
+            state={area}
+          />
+        )}
+
         <SelectInput
           labelx="Asunto"
           onChange={(e) => setIssue(e.target.value)}

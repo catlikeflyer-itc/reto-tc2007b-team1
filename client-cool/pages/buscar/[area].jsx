@@ -37,6 +37,6 @@ export default function Tipo() {
     setType(areas.find((item) => item.slug === area));
   }, [area]);
 
-  return <DataFilter title={type.title} filter={type.title} />;
+  return <DataFilter title={type.title} filter={type.slug} />;
 }
 

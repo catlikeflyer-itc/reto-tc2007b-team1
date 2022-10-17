@@ -1,10 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useAppContext } from "../../../context/AppContext";
 
 export default function SelectorCard({ data }) {
+  const { user } = useAppContext();
+
   return (
-    <Link href={data.link}>
+    <Link
+      href={
+        user.level !== "admin-top" && data.search ? `buscar/${user.area}` : data.link
+      }
+    >
       <div
         className={`${data.bg} rounded-lg shadow-xl flex flex-col p-4 justify-start items-start m-2 col-span-1 cursor-pointer`}
       >
@@ -16,4 +23,3 @@ export default function SelectorCard({ data }) {
     </Link>
   );
 }
-

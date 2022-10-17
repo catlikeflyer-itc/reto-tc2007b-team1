@@ -1,4 +1,3 @@
-import { userAgent } from "next/server";
 import React from "react";
 import { useAppContext } from "../../../context/AppContext";
 import MainButton from "../../buttons/mainButton/mainButton";
@@ -79,7 +78,7 @@ export default function Looker({ routerParam }) {
           {exp.status}
         </span>
         {user.level === "admin-top" ||
-          (user.permission && user.permission.includes(exp.expediente.toString()) && (
+          (user.permission && user.permission.includes(exp.expediente) && (
             <MainButton
               color="green"
               label="Cambiar estatus"

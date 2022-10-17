@@ -19,6 +19,12 @@ export default function index() {
           <p className="m-2">{user.email}</p>
           <p className="font-bold text-blue-900 m-2">Nivel administrativo:</p>
           <p className="m-2">{user.level}</p>
+          <p className="font-bold text-blue-900 m-2">Area:</p>
+          {user.level === "admin-top" ? (
+            <p className="m-2">Administrador general</p>
+          ) : (
+            <p className="m-2">Administrador de {user.area}</p>
+          )}
           <p className="font-bold text-blue-900 m-2">Permisos:</p>
           <p className="m-2">
             {user.permission
