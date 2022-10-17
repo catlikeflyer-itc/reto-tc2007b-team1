@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const client = await clientPromise;
   const db = client.db("Cluster0");
   const query = req.query;
-  const { expedient } = query;
+  const { expedient, email } = query;
   const timestamp = new Date();
 
   switch (req.method) {
@@ -14,7 +14,7 @@ export default async function handler(req, res) {
           .collection("expedientes")
           .update(
             { expediente: parseInt(expedient) },
-            { $push: { logs: timestamp } }
+            { $push: { logs: `${timestamp} - ${email}` } }
           );
         res.status(200).json(myExpedient);
       } catch (error) {

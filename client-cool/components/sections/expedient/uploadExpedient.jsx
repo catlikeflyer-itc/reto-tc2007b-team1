@@ -67,6 +67,7 @@ export default function UploadExpedient() {
             generatedAt: today,
             createdBy: user.email,
             status,
+            logs: []
           }),
         }
       );

@@ -43,15 +43,13 @@ export default function Looker({ routerParam }) {
     };
     const updateData = async () => {
       fetch(
-        "http://localhost:3000/api/expedientes/log?expedient=" + expediente,
+        `http://localhost:3000/api/expedientes/log?expedient=${expediente}&email=${user.email}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            user: user.name,
-          }),
+          body: JSON.stringify(user),
         }
       );
     };
@@ -111,10 +109,10 @@ export default function Looker({ routerParam }) {
           Historial
         </span>
         <div className="overflow-visible bg-white p-2 my-2">
-          {exp.log &&
-            exp.log.map((item, index) => (
+          {exp.logs &&
+            exp.logs.map((item, index) => (
               <p key={index} className="my-2">
-                {item}
+                {item} - {item.user}
               </p>
             ))}
         </div>
