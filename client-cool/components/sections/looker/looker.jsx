@@ -47,15 +47,17 @@ export default function Looker({ routerParam }) {
   }, []);
 
   const handleUpdate = () => {
-    fetch("http://localhost:3000/api/expedientes/update-expediente", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        exp
-      }),
-    })
+    fetch(
+      "http://localhost:3000/api/expedientes/update-expediente?expedient=" +
+        expediente,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(exp),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -65,11 +67,11 @@ export default function Looker({ routerParam }) {
   };
 
   return (
-    <div className="container flex flex-col justify-start items-center m-4 mb-64">
+    <div className="container flex flex-col justify-start items-center m-4 mb-64 w-full">
       <h1 className="text-3xl font-bold text-center text-blue-900 m-4">
         {exp.title}
       </h1>
-      <div className="flex flex-col justify-start items-start">
+      <div className="flex flex-col justify-start items-start w-full">
         <span className="text-md font-bold text-left text-blue-900 my-2">
           Expediente:
         </span>
@@ -92,19 +94,22 @@ export default function Looker({ routerParam }) {
         <p className="my-2">{exp.createdBy}</p>
         <span
           className={`text-md font-bold text-left ${
-            exp.status === "En proceso" ? "text-green-500" : "text-blue-900"
+            exp.status === "En proceso" ? "text-green-500" : "text-red-500"
           }  my-2`}
         >
           {exp.status}
         </span>
-        {user.permission === false ||
-          (user.permission.includes(exp.expediente) && (
-            <MainButton
-              color="green"
-              label="Cambiar estatus"
-              onClick={handleUpdate}
-            />
-          ))}
+        {(user.permission === false ||
+          user.permission.includes(exp.expediente)) &&
+        exp.status !== "Finalizado" ? (
+          <MainButton
+            color="green"
+            label="Cambiar estatus"
+            onClick={handleUpdate}
+          />
+        ) : (
+          <></>
+        )}
       </div>
       {docs &&
         docs.map((doc) => (

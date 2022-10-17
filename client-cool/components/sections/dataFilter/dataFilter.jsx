@@ -41,7 +41,7 @@ const TableRow = ({ data }) => (
   </tr>
 );
 
-export default function DataFilter({ title, filter }) {
+export default function DataFilter({ title, filter, status = false }) {
   const [datax, setData] = React.useState("");
 
   React.useEffect(() => {
@@ -80,7 +80,11 @@ export default function DataFilter({ title, filter }) {
         <tbody>
           {/** Add filters */}
           {filter === "todos"
-            ? datax.map((item) => <TableRow data={item} />)
+            ? status === false
+              ? datax.map((item) => <TableRow data={item} />)
+              : datax
+                  .filter((item) => item.status === "Finalizado")
+                  .map((item) => <TableRow data={item} />)
             : datax
                 .filter((item) => item.area === filter)
                 .map((item) => <TableRow data={item} />)}
