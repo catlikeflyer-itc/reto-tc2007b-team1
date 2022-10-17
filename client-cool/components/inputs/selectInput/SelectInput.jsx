@@ -7,6 +7,7 @@ export default function SelectInput(
   return (
     <div className="mr-4 my-2">
       <label htmlFor={labelx}>{labelx}</label>
+
       <select
         {...props}
         id={labelx}
