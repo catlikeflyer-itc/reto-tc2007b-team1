@@ -1,13 +1,13 @@
 import React from "react";
 
 export default function SelectInput(
-  { labelx, selectOptions, onChange },
+  { labelx, selectOptions, onChange, test },
   props
 ) {
   return (
     <div className="mr-4 my-2">
       <label htmlFor={labelx}>{labelx}</label>
-      <select data-testid="select"
+      <select data-testid={test}
         {...props}
         id={labelx}
         name={labelx}
