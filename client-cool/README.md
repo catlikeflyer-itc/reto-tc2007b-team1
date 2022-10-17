@@ -1,17 +1,31 @@
 # AO Docs Manager
-## Equipo 1
+
+## Equipo 1, TC2007B
 
 ## Integrantes
 
-## Change tracker
+- Juan Muniain Otero |A01781341
+- Miguel Angel Bustamante Perez | A01781583
+- Do Hyun Nam | A01025276
+- Andrew Dunkerley | A01025076
+- Emiliano Cabrera | A01025453
+- Diego Corrales | A01781631
+- Andrés Briseño | A01352283
 
-## Missing
-- Fetch data from API using getStaticProps and getServersideProps
-- Add feature to embed pdf files
-- Load based on folio
-- State managers for inputs
+## Descripción
 
+AO Docs Manager es una pequeña aplicación que ayuda a los colaboradores de la alcaldía Álvaro Obregón para digitalizar y administrar sus documentos que tienen de manera física. La aplicación permite a los usuarios subir documentos, crear expedientes, editar documentos, y descargar documentos. La aplicación también permite a los usuarios crear cuentas y loguearse para poder acceder a sus documentos que están trabajando de manera sincronizada.
 
-## Done
+## Instalación
 
-## In progress
+1. Clonar el repositorio o descargar el archivo comprimido.
+2. Utilizar el comando `npm install` para instalar las dependencias.
+3. Crear un archivo `.env.local` en la raíz del proyecto con las siguientes variables de entorno:
+
+```
+MONGODB_URI= "[URI DE LA BASE DE DATOS DE MONGO]"
+```
+
+4. Utilizar el comando `npm run build` para generar la carpeta de produccion.
+5. Utilizar el comando `npm start` para iniciar el servidor.
+6. Ingresar a la url `localhost:3000` en el navegador.
