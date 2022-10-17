@@ -16,8 +16,8 @@ export default function Footer() {
         </div>
         <div className="col-span-1 md:col-span-2 flex flex-col justify-center items-start h-full">
           <p>{data.footer.address}</p>
-          <a href={`mailto:${data.footer.email}`}>{data.footer.email}</a>
-          <p>Tel: {data.footer.phone}</p>
+          <a data-test="alclink" href={`mailto:${data.footer.email}`}>{data.footer.email}</a>
+          <p data-test="alctel">Tel: {data.footer.phone}</p>
         </div>
       </div>
     </footer>

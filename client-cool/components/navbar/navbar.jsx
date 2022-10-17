@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <nav
       className="flex flex-row justify-between items-center h-16 bg-gray-800 fixed t-0 l-0 w-full z-10 px-2 transition-opacity ease-in-out duration-300"
-      onLoad={console.log(data)}
+      //onLoad={console.log(data)}
     >
       <Link href="/">
         <div className="flex flex-row items-center justify-start md:w-1/4 h-12">
