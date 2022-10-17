@@ -25,7 +25,8 @@ AO Docs Manager es una pequeña aplicación que ayuda a los colaboradores de la 
 ```
 MONGODB_URI= "[URI DE LA BASE DE DATOS DE MONGO]"
 ```
-
+4. Crear una carpeta cert en la raíz del proyecto y utilizar el comando `openssl req -x509 -out localhost.crt -keyout localhost.key -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost'` dentro de ella, lo cual generará dos archivos: la llave, `.key`, y el certificado, `.crt`.
+5. Descargar el archivo `.crt` e instalar en los equipos que se usarán para acceder al sistema.
 4. Utilizar el comando `npm run build` para generar la carpeta de produccion.
 5. Utilizar el comando `npm start` para iniciar el servidor.
 6. Ingresar a la url `localhost:3000` en el navegador.

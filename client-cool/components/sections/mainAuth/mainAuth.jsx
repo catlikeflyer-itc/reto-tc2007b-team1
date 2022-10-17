@@ -17,7 +17,7 @@ export default function MainAuth({ data, state }) {
   const [pass, setPass] = React.useState("");
   const [area, setArea] = React.useState("");
   const [level, setLevel] = React.useState("");
-  const [permission, setPermission] = React.useState([]);
+  const [permission, setPermission] = React.useState(false);
 
   const levelPairs = [
     {
@@ -68,8 +68,10 @@ export default function MainAuth({ data, state }) {
       permission === []
     ) {
       alert("Por favor, rellena todos los campos");
+    } else if (pass.length < 6) {
+      alert("La contraseña debe tener al menos 6 caracteres");
     } else {
-      let res = await fetch("http://localhost:3000/api/auth/signup", {
+      let res = await fetch("https://localhost:3000/api/auth/signup", {
         method: "POST",
         body: JSON.stringify({
           name,
@@ -77,7 +79,10 @@ export default function MainAuth({ data, state }) {
           email,
           area: areas.find((item) => item.title === area).slug,
           level: levelPairs.find((pair) => pair.title === level).slug,
-          permission: permission.map((item) => parseInt(item)),
+          permission:
+            level === "Usuario"
+              ? permission.map((item) => parseInt(item))
+              : false,
         }),
       });
 
@@ -92,11 +97,9 @@ export default function MainAuth({ data, state }) {
 
     if (email === "" || pass === "") {
       alert("Revisa los campos");
-    } else if (pass.length < 6) {
-      alert("La contraseña debe tener al menos 6 caracteres");
     } else {
       let res = await fetch(
-        `http://localhost:3000/api/auth/login?email=${email}&password=${pass}`,
+        `https://localhost:3000/api/auth/login?email=${email}&password=${pass}`,
         {
           method: "GET",
         }

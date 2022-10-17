@@ -13,7 +13,8 @@ export default function Looker({ routerParam }) {
   React.useEffect(() => {
     const fetchData = async () => {
       fetch(
-        "http://localhost:3000/api/documentos/get-docs?expedient=" + expediente,
+        "https://localhost:3000/api/documentos/get-docs?expedient=" +
+          expediente,
         {
           method: "GET",
           headers: {
@@ -28,7 +29,8 @@ export default function Looker({ routerParam }) {
     };
     const fetchData2 = async () => {
       fetch(
-        "http://localhost:3000/api/expedientes/get-exp?expedient=" + expediente,
+        "https://localhost:3000/api/expedientes/get-exp?expedient=" +
+          expediente,
         {
           method: "GET",
           headers: {
@@ -43,7 +45,7 @@ export default function Looker({ routerParam }) {
     };
     const updateData = async () => {
       fetch(
-        `http://localhost:3000/api/expedientes/log?expedient=${expediente}&email=${user.email}`,
+        `https://localhost:3000/api/expedientes/log?expedient=${expediente}&email=${user.email}`,
         {
           method: "PUT",
           headers: {
@@ -61,7 +63,7 @@ export default function Looker({ routerParam }) {
 
   const handleUpdate = () => {
     fetch(
-      "http://localhost:3000/api/expedientes/update-expediente?expedient=" +
+      "https://localhost:3000/api/expedientes/update-expediente?expedient=" +
         expediente,
       {
         method: "PUT",

@@ -46,7 +46,7 @@ export default function DataFilter({ title, filter, status = false }) {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      fetch("http://localhost:3000/api/expedientes/all-expedientes", {
+      fetch("https://localhost:3000/api/expedientes/all-expedientes", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -52,7 +52,7 @@ export default function UploadExpedient() {
       alert("Todos los campos son obligatorios");
     } else {
       let res = await fetch(
-        "http://localhost:3000/api/expedientes/create-expediente",
+        "https://localhost:3000/api/expedientes/create-expediente",
         {
           method: "POST",
           body: JSON.stringify({
@@ -67,7 +67,7 @@ export default function UploadExpedient() {
             generatedAt: today,
             createdBy: user.email,
             status,
-            logs: []
+            logs: [],
           }),
         }
       );
