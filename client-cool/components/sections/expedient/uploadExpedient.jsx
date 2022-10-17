@@ -6,7 +6,7 @@ import TextAreaInput from "../../inputs/textArea/textAreaInput";
 import { useAppContext } from "../../../context/AppContext";
 import { useRouter } from "next/router";
 
-export default function UploadExpedient({ data }) {
+export default function UploadExpedient() {
   // React get file path
   const { user } = useAppContext();
   const [expediente, setExpediente] = React.useState("");

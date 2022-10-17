@@ -3,7 +3,7 @@ import React from "react";
 import { useAppContext } from "../../../context/AppContext";
 import MainButton from "../../buttons/mainButton/mainButton";
 
-export default function Looker({ data, routerParam }) {
+export default function Looker({ routerParam }) {
   const expediente = routerParam;
   const { user } = useAppContext();
   const [exp, setExp] = React.useState({});
@@ -79,7 +79,7 @@ export default function Looker({ data, routerParam }) {
           {exp.status}
         </span>
         {user.level === "admin-top" ||
-          (user.permission.includes(exp.expediente.toString()) && (
+          (user.permission && user.permission.includes(exp.expediente.toString()) && (
             <MainButton
               color="green"
               label="Cambiar estatus"

@@ -4,8 +4,6 @@ import data from "../../data/staticData.json";
 import Link from "next/link";
 
 export default function Navbar() {
-  const [toggle, setToggle] = React.useState(false);
-
   return (
     <nav
       className="flex flex-row justify-between items-center h-16 bg-gray-800 fixed t-0 l-0 w-full z-10 px-2 transition-opacity ease-in-out duration-300"

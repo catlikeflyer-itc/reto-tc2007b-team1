@@ -4,7 +4,7 @@ import data from "../../data/staticData.json";
 import { useAppContext } from "../../context/AppContext";
 import { useRouter } from "next/router";
 
-export default function index() {
+export default function buscar() {
   const { user } = useAppContext();
   const router = useRouter();
 
@@ -16,3 +16,11 @@ export default function index() {
     router.push("/");
   }
 }
+
+export async function getStaticProps(context) {
+  return {
+    // Passed to the page component as props
+    props: {},
+  };
+}
+

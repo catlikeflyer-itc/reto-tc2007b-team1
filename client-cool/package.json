@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "dgram": "^1.0.1",
     "dns": "^0.2.2",
@@ -17,13 +16,11 @@
     "jsencrypt": "^3.2.1",
     "mongodb": "^4.10.0",
     "net": "^1.0.2",
-    "next": "12.3.1",
-    "next-session": "^4.0.5",
+    "next": "^12.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-file-base64": "^1.0.3",
     "react-icons": "^4.4.0",
-    "react-pdf": "^5.7.2",
     "tls": "^0.0.1"
   },
   "devDependencies": {

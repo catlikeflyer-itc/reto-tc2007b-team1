@@ -1,7 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Looker from "../../../components/sections/looker/looker";
-import dummy from "../../../data/dummyData.json";
 import { useAppContext } from "../../../context/AppContext";
 
 export default function DocByExpedient() {
@@ -12,10 +11,40 @@ export default function DocByExpedient() {
   return (
     <>
       {user ? (
-        <Looker data={dummy.dummyBuscador} routerParam={expediente} />
+        <Looker routerParam={expediente} />
       ) : (
         <div onLoad={() => router.push("/")}>Ingrese con su cuenta primero</div>
       )}
     </>
   );
+}
+
+export async function getStaticProps(context) {
+  return {
+    // Passed to the page component as props
+    props: {},
+  };
+}
+
+export async function getStaticPaths() {
+  let paths = [];
+
+  const fetchData = async () => {
+    fetch("http://localhost:3000/api/expedientes/all-expedientes", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        data.map((item) => {
+          paths.push({ params: { expediente: item.expediente } });
+        });
+      });
+  };
+
+  await fetchData();
+
+  return { paths, fallback: false };
 }
