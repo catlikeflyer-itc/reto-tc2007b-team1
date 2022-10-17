@@ -79,7 +79,10 @@ export default function MainAuth({ data, state }) {
           email,
           area: areas.find((item) => item.title === area).slug,
           level: levelPairs.find((pair) => pair.title === level).slug,
-          permission: permission.map((item) => parseInt(item)),
+          permission:
+            level === "Usuario"
+              ? permission.map((item) => parseInt(item))
+              : false,
         }),
       });
 
