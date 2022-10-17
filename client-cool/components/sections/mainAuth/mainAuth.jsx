@@ -26,10 +26,6 @@ export default function MainAuth({ data, state }) {
     },
     {
       slug: "admin-mid",
-      title: "Administrador de área",
-    },
-    {
-      slug: "user",
       title: "Usuario",
     },
   ];
@@ -198,7 +194,7 @@ export default function MainAuth({ data, state }) {
               })}
               onChange={(e) => setLevel(e.target.value)}
             />
-            {level === "user" && (
+            {level !== "Administrador" && (
               <TextInput
                 labelx={"Expedientes permitidos"}
                 placeholder="Separa por coma los expedientes permitidos"

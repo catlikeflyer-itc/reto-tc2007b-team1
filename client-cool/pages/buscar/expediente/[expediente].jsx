@@ -19,32 +19,3 @@ export default function DocByExpedient() {
   );
 }
 
-export async function getStaticProps(context) {
-  return {
-    // Passed to the page component as props
-    props: {},
-  };
-}
-
-export async function getStaticPaths() {
-  let paths = [];
-
-  const fetchData = async () => {
-    fetch("http://localhost:3000/api/expedientes/all-expedientes", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        data.map((item) => {
-          paths.push({ params: { expediente: item.expediente } });
-        });
-      });
-  };
-
-  await fetchData();
-
-  return { paths, fallback: false };
-}
