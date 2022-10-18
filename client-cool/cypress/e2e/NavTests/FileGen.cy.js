@@ -2,6 +2,7 @@
 import './Log.cy.js';
 
 
+
 Cypress.Commands.add('rCinit', () => {
     const names = ['Andriu','Juang','Doo','Elimiano','Deigo','Mijel','Andre'];
     const s = Math.floor(Math.random() * 7);
@@ -20,7 +21,7 @@ Cypress.Commands.add('compGet', (area,asunto,estatus) => {
 });
 
 Cypress.Commands.add('Create', (area,asunto,estatus) => {
-    cy.rCinit();
     cy.compGet(area,asunto,estatus);
+    cy.rCinit();
 });
 
