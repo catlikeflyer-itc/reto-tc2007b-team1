@@ -6,3 +6,5 @@ describe("The user should be able to register", () => {
     cy.contains("Iniciar").should("exist").click();
   });
 });
+
+

@@ -22,6 +22,6 @@ Cypress.Commands.add('compGet', (area,asunto,estatus) => {
 
 Cypress.Commands.add('Create', (area,asunto,estatus) => {
     cy.compGet(area,asunto,estatus);
-    cy.rCinit();
+    cy.rCinit(); 
 });
 
