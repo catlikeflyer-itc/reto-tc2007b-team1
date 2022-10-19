@@ -5,7 +5,8 @@ import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import { create } from 'react-test-renderer'
 import { render, cleanup } from '@testing-library/react'
-import MainButton from '../components/buttons/mainButton/mainButton.jsx'
+import MainButton from '../components/buttons/mainButton/mainButton';
+
 
 afterEach(cleanup);
 describe('Main button component testing', () => {
