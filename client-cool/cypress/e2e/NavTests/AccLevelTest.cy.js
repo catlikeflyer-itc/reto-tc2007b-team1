@@ -2,6 +2,7 @@
 
 import './funLog.cy'
 
+
 function AccCreate(admin,area){
     const names = ['andriu','juang','doo','elimiano','deigo','mijel','andre'];
     const s = Math.floor(Math.random() * 7);
