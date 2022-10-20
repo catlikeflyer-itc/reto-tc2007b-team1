@@ -181,9 +181,7 @@ export default function MainAuth({ data, state }) {
               labelx={"Contraseña"}
               placeholder="Ingresa tu contraseña"
               onChange={(e) =>
-                hash(e.target.value, 8, function (err, hash) {
-                  setPass(hash);
-                })
+                setPass(e.target.value)
               }
             />
             <SelectInput
