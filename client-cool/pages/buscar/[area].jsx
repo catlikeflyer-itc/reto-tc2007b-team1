@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import DataFilter from "../../components/sections/dataFilter/dataFilter";
+import { useAppContext } from "../../context/AppContext";
 
 // Add getStaticProps to fetch real data
 
@@ -31,11 +32,19 @@ export default function Tipo() {
   const router = useRouter();
   const { area } = router.query;
   const [type, setType] = React.useState("");
+  const { user } = useAppContext();
 
   useEffect(() => {
     setType(areas.find((item) => item.slug === area));
   }, []);
 
-  return <DataFilter title={type.title} filter={type.slug} />;
+  return (
+    <>
+      {user ? (
+        <DataFilter title={type.title} filter={type.slug} />
+      ) : (
+        "Permisos insuficientes"
+      )}
+    </>
+  );
 }
-
