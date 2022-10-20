@@ -27,7 +27,8 @@ describe('File Creation Check', () => {
 
             cy.contains('Crear expediente').click();
             cy.contains('Buscar').click();
-            cy.contains(areas[ra]).click();
+            if(areas[ra] == 'Jurídica') cy.contains("Juridica").click();
+            else cy.contains(areas[ra]).click();
             cy.contains(nFile).should('be.visible', {timeout: 3000});
             cy.go('back');
      

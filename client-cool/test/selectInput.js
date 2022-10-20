@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+/* Old test
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import { create } from 'react-test-renderer';
@@ -106,7 +107,7 @@ function getYearOptions() {
 
     yearOptions.selectOptions.sort();
     return yearOptions;
-}
+
 
 function getNameOptions() {
     const nameOptions = { label: 'Nombre', selectOptions: Array() };
@@ -124,3 +125,4 @@ function getNameOptions() {
     nameOptions.selectOptions.sort();
     return nameOptions;
 }
+*/
