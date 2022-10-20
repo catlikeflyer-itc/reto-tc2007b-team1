@@ -5,12 +5,12 @@ import TextInput from "../../inputs/textInput/textInput";
 import { useAppContext } from "../../../context/AppContext";
 import SelectInput from "../../inputs/selectInput/SelectInput";
 import { useRouter } from "next/router";
-import { compare, hash } from "bcryptjs";
+import { compare } from "bcryptjs";
 
 // Add ref or onchange state management
 
 export default function MainAuth({ data, state }) {
-  const { setUser } = useAppContext();
+  const { setUser, user } = useAppContext();
   const router = useRouter();
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -164,56 +164,60 @@ export default function MainAuth({ data, state }) {
           </>
         ) : (
           <>
-            <h1 className="text-3xl font-bold text-center text-blue-900 my-4">
-              Crea un nuevo usuario
-            </h1>
-            <TextInput
-              labelx={"Correo"}
-              placeholder="Ingresa tu correo"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextInput
-              labelx={"Nombre"}
-              placeholder="John Doe"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <TextInput
-              labelx={"Contraseña"}
-              placeholder="Ingresa tu contraseña"
-              onChange={(e) =>
-                setPass(e.target.value)
-              }
-            />
-            <SelectInput
-              labelx={"Nivel administrativo"}
-              placeholder={"nivel administrativo"}
-              selectOptions={levelPairs.map((pair) => {
-                return pair.title;
-              })}
-              onChange={(e) => setLevel(e.target.value)}
-            />
-            {level !== "Administrador" && (
-              <SelectInput
-                labelx={"Area"}
-                placeholder={"Area a la que pertenece"}
-                selectOptions={areas.map((area) => area.title)}
-                onChange={(e) => setArea(e.target.value)}
-              />
+            {user && user.level === "admin-top" ? (
+              <>
+                {" "}
+                <h1 className="text-3xl font-bold text-center text-blue-900 my-4">
+                  Crea un nuevo usuario
+                </h1>
+                <TextInput
+                  labelx={"Correo"}
+                  placeholder="Ingresa tu correo"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <TextInput
+                  labelx={"Nombre"}
+                  placeholder="John Doe"
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <TextInput
+                  labelx={"Contraseña"}
+                  placeholder="Ingresa tu contraseña"
+                  onChange={(e) => setPass(e.target.value)}
+                />
+                <SelectInput
+                  labelx={"Nivel administrativo"}
+                  placeholder={"nivel administrativo"}
+                  selectOptions={levelPairs.map((pair) => {
+                    return pair.title;
+                  })}
+                  onChange={(e) => setLevel(e.target.value)}
+                />
+                {level !== "Administrador" && (
+                  <SelectInput
+                    labelx={"Area"}
+                    placeholder={"Area a la que pertenece"}
+                    selectOptions={areas.map((area) => area.title)}
+                    onChange={(e) => setArea(e.target.value)}
+                  />
+                )}
+                {level === "Usuario" && (
+                  <TextInput
+                    labelx={"Expedientes permitidos"}
+                    placeholder="Separa por coma los expedientes permitidos"
+                    onChange={(e) => setPermission(e.target.value.split(","))}
+                  />
+                )}
+                <MainButton
+                  label="Registrar"
+                  color="bg-green-500"
+                  hoverColor="hover:bg-blue-600"
+                  onClick={handleSignup}
+                />
+              </>
+            ) : (
+              "Permisos insuficientes para esta acción"
             )}
-
-            {level === "Usuario" && (
-              <TextInput
-                labelx={"Expedientes permitidos"}
-                placeholder="Separa por coma los expedientes permitidos"
-                onChange={(e) => setPermission(e.target.value.split(","))}
-              />
-            )}
-            <MainButton
-              label="Registrar"
-              color="bg-green-500"
-              hoverColor="hover:bg-blue-600"
-              onClick={handleSignup}
-            />
           </>
         )}
       </div>
