@@ -6,9 +6,8 @@ export default async function handler(req, res) {
   const db = client.db("Cluster0");
 
   switch (req.method) {
-    case "POST":
-      
-
+    case "POST": 
+    
       try {
         let bodyObject = JSON.parse(req.body);
         let myUser = await db.collection("users").insertOne(bodyObject);
