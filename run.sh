@@ -5,4 +5,4 @@ echo 'MONGODB_URI="mongodb+srv://root:team1root@cluster0.tw4r2e9.mongodb.net/?re
 npm install
 npm run build
 npm run start
-start https://https://localhost:3000
+start https://localhost:3000
